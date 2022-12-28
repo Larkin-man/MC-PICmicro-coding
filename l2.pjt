@@ -78,10 +78,12 @@ BuildTool=
 OptionString=
 AdditionalOptionString=
 [mru-list]
-1=c:\kav\lab2.asm
-2=j:\asm\kav\lab2.asm
-3=j:\asm\kav\lab1.asm
-4=c:\progra~1\mplab\rrr.asm
-5=c:\progra~1\mplab\mult.asm
+1=c:\progra~1\mplab\alex\lab2.asm
+2=c:\kav\lab2.asm
+3=j:\asm\kav\lab2.asm
+4=j:\asm\kav\lab1.asm
+5=c:\progra~1\mplab\rrr.asm
 [Windows]
-0=0000 c:\kav\lab2.asm 83 33 945 493 9 0
+2=0000 c:\progra~1\mplab\alex\lab2.asm 6 4 606 438 9 0
+1=0004 124 439 994 640 9 0
+0=0020 610 8 1010 360 9 0

@@ -1,8 +1,8 @@
 #include<p16f84.inc>
  ORG 0
- GOTO BEGIN
+ GOTO BEGIN ;Эта команда находится по адресу 0h
  ORG 100h
-BEGIN
+BEGIN       ;а эта по адресу 100h
 
  BCF STATUS,RP0
  CLRF PORTB
@@ -11,9 +11,9 @@ BEGIN
  MOVWF TRISB
  BCF STATUS,RP0
 
-LOOP
- MOVLW H'A7'
+ MOVLW H'13'
  MOVWF PORTB
- GOTO LOOP
+ 
+ GOTO $  ; Это необязательно
  END
 

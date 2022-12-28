@@ -1,4 +1,4 @@
-MPASM 02.80 Released             LAB5.ASM   3-10-2009  15:00:55         PAGE  1
+MPASM 02.80 Released             LAB5.ASM   10-8-2010  22:36:16         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -13,8 +13,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0100                  00004  ORG 100h
 0100                  00005 BEGIN
                       00006 
-Warning[207]: Found label after column 1. (SCRATCH)
-  0000000C            00007  SCRATCH EQU 0Ch
+  0000000C            00007 SCRATCH EQU 0Ch
                       00008 
 0100   1283           00009  BCF STATUS,RP0
 0101   0186           00010  CLRF PORTB
@@ -26,20 +25,19 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
                       00015 
 0106   3000           00016  MOVLW 0h
 0107   0086           00017  MOVWF PORTB
-0108   30FF           00018  MOVLW D'255'
+0108   30C8           00018  MOVLW D'200'
 0109   008C           00019  MOVWF SCRATCH
-010A   3003           00020  MOVLW D'3'
+010A   3004           00020  MOVLW D'4'
                       00021 
-010B                  00022 M1
+010B                  00022 LOOP
 010B   0A86           00023  INCF PORTB,1 
 010C   028C           00024  SUBWF SCRATCH,1
 010D   1D03           00025  BTFSS STATUS,Z
-Warning[203]: Found opcode in column 1. (GOTO)
-010E   290B           00026 GOTO M1
-010F                  00027 LOOP
-010F   290F           00028  GOTO LOOP
+010E   290B           00026  GOTO LOOP
+                      00027 
+010F   290F           00028  GOTO $
                       00029  END
-MPASM 02.80 Released             LAB5.ASM   3-10-2009  15:00:55         PAGE  2
+MPASM 02.80 Released             LAB5.ASM   10-8-2010  22:36:16         PAGE  2
 
 
 SYMBOL TABLE
@@ -63,8 +61,7 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000010F
-M1                                0000010B
+LOOP                              0000010B
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
@@ -98,13 +95,13 @@ WRERR                             00000003
 Z                                 00000002
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
-MPASM 02.80 Released             LAB5.ASM   3-10-2009  15:00:55         PAGE  3
+_HS_OSC                           00003FFE
+MPASM 02.80 Released             LAB5.ASM   10-8-2010  22:36:16         PAGE  3
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-_HS_OSC                           00003FFE
 _LP_OSC                           00003FFC
 _PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
@@ -127,7 +124,7 @@ Program Memory Words Free:  1007
 
 
 Errors   :     0
-Warnings :     2 reported,     0 suppressed
+Warnings :     0 reported,     0 suppressed
 Messages :     1 reported,     0 suppressed
 
 

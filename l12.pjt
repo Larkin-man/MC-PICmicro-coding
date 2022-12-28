@@ -1,5 +1,5 @@
 [PROJECT]
-Target=LAB8.HEX
+Target=LAB12.HEX
 Development_Mode=2
 Processor=0x684a
 ToolSuite=Microchip
@@ -29,22 +29,15 @@ Include=
 Library=
 LinkerScript=
 [Target Data]
-FileList=LAB8.ASM;
+FileList=LAB12.ASM;
 BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
 BuildRequired=0
-[LAB8.ASM]
+[LAB12.ASM]
 Type=4
 Path=
 FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-[P16F84.INC]
-Type=5
-Path=
-FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
@@ -77,11 +70,22 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
+[P16F84.INC]
+Type=5
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [mru-list]
-1=c:\progra~1\mplab\alex\lab8.asm
-2=j:\asm\kav\lab8.asm
-3=d:\asm\kav\lab8.asm
+1=j:\asm\kav\lab12.asm
+2=j:\asm\kav\lab11.asm
+3=j:\asm\kav\lab10.asm
+4=j:\asm\kav\lab9.asm
+5=j:\asm\kav\lab8.asm
 [Windows]
-2=0004 221 457 908 606 9 0
-1=0020 564 15 964 367 9 0
-0=0000 c:\progra~1\mplab\alex\lab8.asm 13 11 550 494 9 0
+3=0004 298 550 983 645 9 0
+2=0000 j:\asm\kav\lab12.asm 2 1 581 439 9 0
+1=0002 J:\ASM\KAV\Watch_1.wat 570 364 1018 508 9 0
+0=0020 618 3 1018 355 9 0
+Modify=1 518 283 715 9 0

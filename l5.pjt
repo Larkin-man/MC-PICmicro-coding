@@ -77,13 +77,13 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
-[mru-list]
-1=d:\asm\kav\lab5.asm
-2=j:\asm\kav\lab5.asm
-3=j:\asm\kav\lab4.asm
-4=j:\asm\kav\lab2.asm
-5=j:\asm\kav\lab3.asm
 [Windows]
-2=0020 623 4 1023 362 9 0
-1=0004 3 1 281 650 9 0
-0=0000 d:\asm\kav\lab5.asm 176 1 592 581 9 0
+2=0004 208 417 970 621 9 0
+1=0000 c:\progra~1\mplab\alex\lab5.asm 51 6 568 561 9 0
+0=0020 623 4 1023 362 9 0
+[mru-list]
+1=c:\progra~1\mplab\alex\lab5.asm
+2=d:\asm\kav\lab5.asm
+3=j:\asm\kav\lab5.asm
+4=j:\asm\kav\lab4.asm
+5=j:\asm\kav\lab2.asm

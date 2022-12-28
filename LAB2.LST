@@ -1,4 +1,4 @@
-MPASM 02.80 Released             LAB2.ASM   9-15-2010  8:34:49         PAGE  1
+MPASM 02.80 Released             LAB2.ASM   10-6-2010  18:12:24         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -33,7 +33,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 010C   0086           00022  MOVWF PORTB
 010D   290B           00023  GOTO LOOP
                       00024  END
-MPASM 02.80 Released             LAB2.ASM   9-15-2010  8:34:49         PAGE  2
+MPASM 02.80 Released             LAB2.ASM   10-6-2010  18:12:24         PAGE  2
 
 
 SYMBOL TABLE
@@ -92,7 +92,7 @@ _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
 _LP_OSC                           00003FFC
-MPASM 02.80 Released             LAB2.ASM   9-15-2010  8:34:49         PAGE  3
+MPASM 02.80 Released             LAB2.ASM   10-6-2010  18:12:24         PAGE  3
 
 
 SYMBOL TABLE

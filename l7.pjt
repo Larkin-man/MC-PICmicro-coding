@@ -77,14 +77,13 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
-[Windows]
-3=0000 j:\asm\kav\lab7.asm 1 1 388 439 9 0
-2=0004 198 440 1024 653 9 0
-1=0002 J:\ASM\KAV\Watch_1.wat 0 443 424 587 9 0
-0=0020 622 1 1022 353 9 0
 [mru-list]
-1=j:\asm\kav\lab7.asm
-2=j:\asm\kav\lab6.asm
-3=d:\asm\kav\lab5.asm
-4=j:\asm\kav\lab5.asm
-5=j:\asm\kav\lab4.asm
+1=c:\progra~1\mplab\alex\lab7.asm
+2=c:\progra~1\mplab\alex\test2.asm
+3=c:\progra~1\mplab\alex\test1.asm
+4=j:\asm\kav\lab7.asm
+5=j:\asm\kav\lab6.asm
+[Windows]
+2=0000 c:\progra~1\mplab\alex\lab7.asm 6 3 494 577 9 0
+1=0004 174 411 981 623 9 0
+0=0020 603 11 1003 381 9 0

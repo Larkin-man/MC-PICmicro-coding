@@ -1,4 +1,4 @@
-MPASM 02.80 Released             LAB9.ASM   3-23-2009  19:38:12         PAGE  1
+MPASM 02.80 Released             LAB9.ASM   10-8-2010  22:37:17         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -13,12 +13,9 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0100                  00004  ORG 100h
 0100                  00005 BEGIN
                       00006 
-Warning[207]: Found label after column 1. (D1)
-  0000000C            00007  D1 EQU 0Ch
-Warning[207]: Found label after column 1. (D2)
-  0000000D            00008  D2 EQU 0Dh
-Warning[207]: Found label after column 1. (REG)
-  0000000E            00009  REG EQU 0Eh
+  0000000C            00007 SCRATCH EQU 0Ch
+  0000000D            00008 DIGIT EQU 0Dh
+  0000000E            00009 REG EQU 0Eh
                       00010 
 0100   1283           00011  BCF STATUS,RP0
 0101   0186           00012  CLRF PORTB
@@ -35,78 +32,59 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0109   0085           00021  MOVWF TRISA
 010A   1283           00022  BCF STATUS,RP0
                       00023 
-010B                  00024 LOOP
+010B                  00024 MAIN
 010B   0805           00025  MOVF PORTA,0
-010C   008C           00026  MOVWF D1
+010C   008C           00026  MOVWF SCRATCH
 010D   3010           00027  MOVLW B'10000'
-010E   068C           00028  XORWF D1,1      ;проверка кода
+010E   068C           00028  XORWF SCRATCH,1    ;проверка кода
 010F   1903           00029  BTFSC STATUS,Z
-0110   291C           00030  GOTO T          ;код верен
-0111   291F           00031  GOTO FALSE      ;код не верен
-Warning[203]: Found opcode in column 1. (GOTO)
-0112   290B           00032 GOTO LOOP
+0110   2913           00030  GOTO TRUE          ;код верен
+0111   2916           00031  GOTO FALSE         ;код не верен
+0112   290B           00032  GOTO MAIN
                       00033  
-Warning[207]: Found label after column 1. (ZZZ)
-0113                  00034  ZZZ
-0113   30FF           00035  MOVLW D'255'
-0114   008D           00036  MOVWF D2
-Warning[207]: Found label after column 1. (LOOP1)
-0115                  00037  LOOP1
-0115   30FF           00038  MOVLW D'255'
-0116   008C           00039  MOVWF D1
-Warning[207]: Found label after column 1. (LOOP2)
-0117                  00040  LOOP2
-0117   0B8C           00041  DECFSZ D1,1
-MPASM 02.80 Released             LAB9.ASM   3-23-2009  19:38:12         PAGE  2
+0113                  00034 TRUE
+0113   30FF           00035  MOVLW B'11111111'
+0114   0086           00036  MOVWF PORTB
+0115   290B           00037  GOTO MAIN
+                      00038 
+0116                  00039 FALSE          ;бегущий огонёк
+0116   3003           00040  MOVLW B'00000011'
+0117   0086           00041  MOVWF PORTB
+0118   3007           00042  MOVLW 07h
+0119   008E           00043  MOVWF REG
+011A                  00044 LOOP
+011A   2124           00045  CALL PAUSE
+011B   1403           00046  BSF STATUS,0
+011C   0B8E           00047  DECFSZ REG,1
+011D   1003           00048  BCF STATUS,0
+MPASM 02.80 Released             LAB9.ASM   10-8-2010  22:37:17         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0118   2917           00042  GOTO LOOP2
-0119   0B8D           00043  DECFSZ D2,1
-011A   2915           00044  GOTO LOOP1
-011B   0008           00045  RETURN
-                      00046 
-Warning[207]: Found label after column 1. (T)
-011C                  00047  T
-011C   30FF           00048  MOVLW B'11111111'
-011D   0086           00049  MOVWF PORTB
-011E   290B           00050  GOTO LOOP
-                      00051 
-Warning[207]: Found label after column 1. (FALSE)
-011F                  00052  FALSE          ;бегущий огонёк
-011F   3001           00053  MOVLW 01h
-0120   0086           00054  MOVWF PORTB
-Warning[207]: Found label after column 1. (M1)
-0121                  00055  M1
-0121   3008           00056  MOVLW 08h
-0122   008E           00057  MOVWF REG
-Warning[207]: Found label after column 1. (LOOP3)
-0123                  00058  LOOP3
-                      00059 
-0123   0805           00060  MOVF PORTA,0
-0124   008C           00061  MOVWF D1
-0125   3010           00062  MOVLW B'10000'
-0126   068C           00063  XORWF D1,1      ;проверка кода
-0127   1903           00064  BTFSC STATUS,Z
-0128   290B           00065  GOTO LOOP
-                      00066 
-0129   2113           00067  CALL ZZZ
-012A   1403           00068  BSF STATUS,0
-012B   0B8E           00069  DECFSZ REG,1
-012C   1003           00070  BCF STATUS,0
-Message[305]: Using default destination of 1 (file).
-012D   0D86           00071  RLF PORTB
-012E   3001           00072  MOVLW 01h
-012F   0606           00073  XORWF PORTB,0
-0130   1903           00074  BTFSC STATUS,Z
-0131   2921           00075  GOTO M1
-0132   2923           00076  GOTO LOOP3
-                      00077 
-Warning[205]: Found directive in column 1. (END)
-                      00078 END
-MPASM 02.80 Released             LAB9.ASM   3-23-2009  19:38:12         PAGE  3
+011E   0D86           00049  RLF PORTB,1
+011F   3001           00050  MOVLW 01h
+0120   060E           00051  XORWF REG,0
+0121   1903           00052  BTFSC STATUS,Z
+0122   2916           00053  GOTO FALSE
+0123   291A           00054  GOTO LOOP
+                      00055 
+0124                  00056 PAUSE
+0124   30FF           00057  MOVLW D'255'
+0125   008D           00058  MOVWF DIGIT
+0126                  00059 ONE
+0126   30FF           00060  MOVLW D'255'
+0127   008C           00061  MOVWF SCRATCH
+0128                  00062 TWO
+0128   0B8C           00063  DECFSZ SCRATCH,1
+0129   2928           00064  GOTO TWO
+012A   0B8D           00065  DECFSZ DIGIT,1
+012B   2926           00066  GOTO ONE
+012C   0008           00067  RETURN
+                      00068 
+                      00069  END
+MPASM 02.80 Released             LAB9.ASM   10-8-2010  22:37:17         PAGE  3
 
 
 SYMBOL TABLE
@@ -114,9 +92,8 @@ SYMBOL TABLE
 
 BEGIN                             00000100
 C                                 00000000
-D1                                0000000C
-D2                                0000000D
 DC                                00000001
+DIGIT                             0000000D
 EEADR                             00000009
 EECON1                            00000088
 EECON2                            00000089
@@ -124,7 +101,7 @@ EEDATA                            00000008
 EEIE                              00000006
 EEIF                              00000004
 F                                 00000001
-FALSE                             0000011F
+FALSE                             00000116
 FSR                               00000004
 GIE                               00000007
 INDF                              00000000
@@ -133,15 +110,14 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000010B
-LOOP1                             00000115
-LOOP2                             00000117
-LOOP3                             00000123
-M1                                00000121
+LOOP                              0000011A
+MAIN                              0000010B
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
+ONE                               00000126
 OPTION_REG                        00000081
+PAUSE                             00000124
 PCL                               00000002
 PCLATH                            0000000A
 PORTA                             00000005
@@ -156,8 +132,8 @@ RD                                00000000
 REG                               0000000E
 RP0                               00000005
 RP1                               00000006
+SCRATCH                           0000000C
 STATUS                            00000003
-T                                 0000011C
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
@@ -165,7 +141,9 @@ T0SE                              00000004
 TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
-MPASM 02.80 Released             LAB9.ASM   3-23-2009  19:38:12         PAGE  4
+TRUE                              00000113
+TWO                               00000128
+MPASM 02.80 Released             LAB9.ASM   10-8-2010  22:37:17         PAGE  4
 
 
 SYMBOL TABLE
@@ -176,7 +154,6 @@ WR                                00000001
 WREN                              00000002
 WRERR                             00000003
 Z                                 00000002
-ZZZ                               00000113
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
@@ -193,16 +170,16 @@ __16F84                           00000001
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X--------------- ---------------- ---------------- ----------------
-0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXX-------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXX--- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    52
-Program Memory Words Free:   972
+Program Memory Words Used:    46
+Program Memory Words Free:   978
 
 
 Errors   :     0
-Warnings :    12 reported,     0 suppressed
-Messages :     3 reported,     0 suppressed
+Warnings :     0 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
 
 

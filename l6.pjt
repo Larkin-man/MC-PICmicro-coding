@@ -77,13 +77,13 @@ FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
-[mru-list]
-1=j:\asm\kav\lab6.asm
-2=d:\asm\kav\lab5.asm
-3=j:\asm\kav\lab5.asm
-4=j:\asm\kav\lab4.asm
-5=j:\asm\kav\lab2.asm
 [Windows]
-2=0020 559 91 959 443 9 0
-1=0000 j:\asm\kav\lab6.asm 22 24 848 462 9 0
-0=0004 0 0 826 438 9 0
+2=0004 84 459 950 637 9 0
+1=0000 c:\progra~1\mplab\alex\lab6.asm 26 4 474 638 9 0
+0=0020 559 91 959 443 9 0
+[mru-list]
+1=c:\progra~1\mplab\alex\lab6.asm
+2=j:\asm\kav\lab6.asm
+3=d:\asm\kav\lab5.asm
+4=j:\asm\kav\lab5.asm
+5=j:\asm\kav\lab4.asm

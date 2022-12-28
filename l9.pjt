@@ -78,11 +78,13 @@ TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
 [Windows]
-2=0004 326 452 1001 644 9 0
-1=0000 j:\asm\kav\lab9.asm 4 2 575 447 9 0
-0=0020 621 3 1021 355 9 0
-Modify=8 521 290 718 9 0
+2=0000 c:\progra~1\mplab\alex\lab9.asm 13 5 593 437 9 0
+1=0004 331 444 1006 636 9 0
+0=0020 599 5 999 357 9 0
+Modify=14 516 296 713 9 0
 [mru-list]
-1=j:\asm\kav\lab9.asm
-2=j:\asm\kav\lab8.asm
-3=d:\asm\kav\lab8.asm
+1=c:\progra~1\mplab\alex\test3.asm
+2=c:\progra~1\mplab\alex\test4.asm
+3=c:\progra~1\mplab\alex\lab7.asm
+4=c:\progra~1\mplab\alex\lab9.asm
+5=j:\asm\kav\lab9.asm

@@ -1,4 +1,4 @@
-MPASM 02.80 Released             LAB6.ASM   3-16-2009  12:15:53         PAGE  1
+MPASM 02.80 Released             LAB6.ASM   10-29-2010  14:06:11         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -13,22 +13,15 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0100                  00004  ORG 100h
 0100                  00005 BEGIN
                       00006 
-Warning[207]: Found label after column 1. (CODE1)
-  0000000C            00007  CODE1 EQU 0Ch
-Warning[207]: Found label after column 1. (CODE2)
-  0000000D            00008  CODE2 EQU 0Dh
-Warning[207]: Found label after column 1. (CODE3)
-  0000000E            00009  CODE3 EQU 0Eh
-Warning[207]: Found label after column 1. (CODE4)
-  0000000F            00010  CODE4 EQU 0Fh
-Warning[207]: Found label after column 1. (CODE5)
-  00000010            00011  CODE5 EQU 010h
-Warning[207]: Found label after column 1. (VAR3)
-  00000011            00012  VAR3 EQU 011h
-Warning[207]: Found label after column 1. (VAR4)
-  00000012            00013  VAR4 EQU 012h
+  0000000C            00007 CODE1 EQU 0Ch
+  0000000D            00008 CODE2 EQU 0Dh
+  0000000E            00009 CODE3 EQU 0Eh
+  0000000F            00010 CODE4 EQU 0Fh
+  00000010            00011 CODE5 EQU 010h
+  00000011            00012 X EQU 011h
+  00000012            00013 Y EQU 012h
                       00014  
-0100                  00015 MAINLOOP
+0100                  00015 MAIN
                       00016 
 0100   1283           00017  BCF STATUS,RP0
 0101   0186           00018  CLRF PORTB
@@ -36,126 +29,114 @@ Warning[207]: Found label after column 1. (VAR4)
 0103   1683           00020  BSF STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 0104   0086           00021  MOVWF TRISB
-                      00022 
+                      00022  
 0105   1283           00023  BCF STATUS,RP0
 0106   0185           00024  CLRF PORTA
-0107   301F           00025  MOVLW B'11111'
+0107   3000           00025  MOVLW B'00000'
 0108   1683           00026  BSF STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 0109   0085           00027  MOVWF TRISA
 010A   1283           00028  BCF STATUS,RP0
                       00029 
-010B   3010           00030  MOVLW B'10000'
+010B   3018           00030  MOVLW B'11000'
 010C   008C           00031  MOVWF CODE1
-010D   3008           00032  MOVLW B'01000'
+010D   300C           00032  MOVLW B'01100'
 010E   008D           00033  MOVWF CODE2
-010F   3004           00034  MOVLW B'00100'
+010F   3006           00034  MOVLW B'00110'
 0110   008E           00035  MOVWF CODE3
-0111   3002           00036  MOVLW B'00010'
+0111   3003           00036  MOVLW B'00011'
 0112   008F           00037  MOVWF CODE4
-0113   3001           00038  MOVLW B'00001'
+0113   3011           00038  MOVLW B'10001'
 0114   0090           00039  MOVWF CODE5
                       00040 
 0115   0805           00041  MOVF PORTA,0
-MPASM 02.80 Released             LAB6.ASM   3-16-2009  12:15:53         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
 0116   068C           00042  XORWF CODE1,1
 0117   1903           00043  BTFSC STATUS,Z
-0118   2126           00044  CALL L1
+0118   2126           00044  CALL ONE
                       00045 
 0119   0805           00046  MOVF PORTA,0
 011A   068D           00047  XORWF CODE2,1
 011B   1903           00048  BTFSC STATUS,Z
-011C   212D           00049  CALL L2
-                      00050 
-011D   0805           00051  MOVF PORTA,0
-011E   068E           00052  XORWF CODE3,1
-011F   1903           00053  BTFSC STATUS,Z
-0120   2135           00054  CALL L3
-                      00055 
-0121   0805           00056  MOVF PORTA,0
-0122   068F           00057  XORWF CODE4,1
-0123   1903           00058  BTFSC STATUS,Z
-0124   2143           00059  CALL L4
-Warning[203]: Found opcode in column 1. (GOTO)
-0125   2900           00060 GOTO MAINLOOP
-                      00061 
-0126                  00062 L1
-0126   30A7           00063  MOVLW H'A7'
-0127   0086           00064  MOVWF PORTB
-0128   0810           00065  MOVF CODE5,0
-0129   0605           00066  XORWF PORTA,0
-012A   1D03           00067  BTFSS STATUS,Z
-012B   2926           00068  GOTO L1
-Warning[203]: Found opcode in column 1. (RETURN)
-012C   0008           00069 RETURN
-                      00070 
-012D                  00071 L2
-012D   3019           00072  MOVLW D'25'
-012E   3E4E           00073  ADDLW D'78'
-012F   0086           00074  MOVWF PORTB
-0130   0810           00075  MOVF CODE5,0
-0131   0605           00076  XORWF PORTA,0
-0132   1D03           00077  BTFSS STATUS,Z
-0133   292D           00078  GOTO L2
-Warning[203]: Found opcode in column 1. (RETURN)
-0134   0008           00079 RETURN
-                      00080 
-0135                  00081 L3
-0135   3005           00082  MOVLW 05h
-0136   0091           00083  MOVWF VAR3
-0137   3000           00084  MOVLW 0h
-Warning[207]: Found label after column 1. (M1)
-0138                  00085  M1
-0138   3E0A           00086  ADDLW D'10'
-0139   0B91           00087  DECFSZ VAR3,1
-013A   2938           00088  GOTO M1
-013B   0091           00089  MOVWF VAR3
-Warning[207]: Found label after column 1. (LL3)
-MPASM 02.80 Released             LAB6.ASM   3-16-2009  12:15:53         PAGE  3
+MPASM 02.80 Released             LAB6.ASM   10-29-2010  14:06:11         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-013C                  00090  LL3
-013C   0811           00091  MOVF VAR3,0
-013D   0086           00092  MOVWF PORTB
-013E   0810           00093  MOVF CODE5,0
-013F   0605           00094  XORWF PORTA,0
-0140   1D03           00095  BTFSS STATUS,Z
-0141   293C           00096  GOTO LL3
-Warning[203]: Found opcode in column 1. (RETURN)
-0142   0008           00097 RETURN
-                      00098 
-0143                  00099 L4
-0143   3000           00100  MOVLW 0h
-0144   0086           00101  MOVWF PORTB
-0145   30FF           00102  MOVLW D'255'
-0146   0092           00103  MOVWF VAR4
-0147   3003           00104  MOVLW D'3'
-Warning[207]: Found label after column 1. (M2)
-0148                  00105  M2
-0148   0A86           00106  INCF PORTB,1 
-0149   0292           00107  SUBWF VAR4,1
-014A   1D03           00108  BTFSS STATUS,Z
-014B   2948           00109  GOTO M2
-Warning[207]: Found label after column 1. (LL4)
-014C                  00110  LL4
-014C   0810           00111  MOVF CODE5,0
-014D   0605           00112  XORWF PORTA,0
-014E   1D03           00113  BTFSS STATUS,Z
-014F   294C           00114  GOTO LL4
-Warning[203]: Found opcode in column 1. (RETURN)
-0150   0008           00115 RETURN
-                      00116  
-Warning[205]: Found directive in column 1. (END)
-                      00117 END
-MPASM 02.80 Released             LAB6.ASM   3-16-2009  12:15:53         PAGE  4
+011C   212D           00049  CALL TWO
+                      00050 
+011D   0805           00051  MOVF PORTA,0
+011E   068E           00052  XORWF CODE3,1
+011F   1903           00053  BTFSC STATUS,Z
+0120   2135           00054  CALL THREE
+                      00055 
+0121   0805           00056  MOVF PORTA,0
+0122   068F           00057  XORWF CODE4,1
+0123   1903           00058  BTFSC STATUS,Z
+0124   2140           00059  CALL FOUR
+                      00060 
+0125   2900           00061  GOTO MAIN
+                      00062 
+0126                  00063 ONE
+0126   3013           00064  MOVLW H'13'
+0127   0086           00065  MOVWF PORTB
+0128   0810           00066  MOVF CODE5,0
+0129   0605           00067  XORWF PORTA,0
+012A   1D03           00068  BTFSS STATUS,Z
+012B   2926           00069  GOTO ONE
+012C   0008           00070  RETURN
+                      00071 
+012D                  00072 TWO
+012D   3064           00073  MOVLW D'100'
+012E   3E2A           00074  ADDLW D'42'
+012F   0086           00075  MOVWF PORTB
+0130   0810           00076  MOVF CODE5,0
+0131   0605           00077  XORWF PORTA,0
+0132   1D03           00078  BTFSS STATUS,Z
+0133   292D           00079  GOTO TWO
+0134   0008           00080  RETURN
+                      00081 
+0135                  00082 THREE
+0135   3013           00083  MOVLW 013h
+0136   0091           00084  MOVWF X
+0137                  00085 M1
+0137   3012           00086  MOVLW 012h
+0138   0786           00087  ADDWF PORTB,1
+0139   0B91           00088  DECFSZ X,1
+013A   2937           00089  GOTO M1
+013B                  00090 M2 
+013B   0810           00091  MOVF CODE5,0
+013C   0605           00092  XORWF PORTA,0
+013D   1D03           00093  BTFSS STATUS,Z
+013E   293B           00094  GOTO M2
+013F   0008           00095  RETURN
+                      00096 
+0140                  00097 FOUR
+0140   3000           00098  MOVLW 0h
+0141   0086           00099  MOVWF PORTB
+0142   30C8           00100  MOVLW D'200'
+0143   0092           00101  MOVWF Y
+MPASM 02.80 Released             LAB6.ASM   10-29-2010  14:06:11         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0144   3004           00102  MOVLW D'4'
+0145                  00103 M3
+0145   0A86           00104  INCF PORTB,1 
+0146   0292           00105  SUBWF Y,1
+0147   1D03           00106  BTFSS STATUS,Z
+0148   2945           00107  GOTO M3
+0149                  00108 M4
+0149   0810           00109  MOVF CODE5,0
+014A   0605           00110  XORWF PORTA,0
+014B   1D03           00111  BTFSS STATUS,Z
+014C   2949           00112  GOTO M4
+014D   0008           00113  RETURN
+                      00114  
+                      00115  END
+MPASM 02.80 Released             LAB6.ASM   10-29-2010  14:06:11         PAGE  4
 
 
 SYMBOL TABLE
@@ -176,6 +157,7 @@ EEDATA                            00000008
 EEIE                              00000006
 EEIF                              00000004
 F                                 00000001
+FOUR                              00000140
 FSR                               00000004
 GIE                               00000007
 INDF                              00000000
@@ -184,18 +166,15 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-L1                                00000126
-L2                                0000012D
-L3                                00000135
-L4                                00000143
-LL3                               0000013C
-LL4                               0000014C
-M1                                00000138
-M2                                00000148
-MAINLOOP                          00000100
+M1                                00000137
+M2                                0000013B
+M3                                00000145
+M4                                00000149
+MAIN                              00000100
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
+ONE                               00000126
 OPTION_REG                        00000081
 PCL                               00000002
 PCLATH                            0000000A
@@ -214,22 +193,24 @@ STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-MPASM 02.80 Released             LAB6.ASM   3-16-2009  12:15:53         PAGE  5
+T0SE                              00000004
+THREE                             00000135
+MPASM 02.80 Released             LAB6.ASM   10-29-2010  14:06:11         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-T0SE                              00000004
 TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
-VAR3                              00000011
-VAR4                              00000012
+TWO                               0000012D
 W                                 00000000
 WR                                00000001
 WREN                              00000002
 WRERR                             00000003
+X                                 00000011
+Y                                 00000012
 Z                                 00000002
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
@@ -248,16 +229,16 @@ MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X--------------- ---------------- ---------------- ----------------
 0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0140 : XXXXXXXXXXXXXXXX X--------------- ---------------- ----------------
+0140 : XXXXXXXXXXXXXX-- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    82
-Program Memory Words Free:   942
+Program Memory Words Used:    79
+Program Memory Words Free:   945
 
 
 Errors   :     0
-Warnings :    17 reported,     0 suppressed
+Warnings :     0 reported,     0 suppressed
 Messages :     2 reported,     0 suppressed
 
 
