@@ -1,9 +1,8 @@
 [PROJECT]
-Target=LAB3.HEX
+Target=LAB10.HEX
 Development_Mode=2
 Processor=0x684a
 ToolSuite=Microchip
-
 [Fuses]
 Frequency=4000000.000000
 ClockSource=1
@@ -25,19 +24,23 @@ DisableIoPins=0
 CPP2_ENABLE=0
 LPSC_ENABLE=0
 MCLRPU_ENABLE=0
-
 [Directories]
 Include=
 Library=
 LinkerScript=
-
 [Target Data]
-FileList=LAB3.ASM;
+FileList=LAB10.ASM;
 BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
 BuildRequired=0
-
+[LAB10.ASM]
+Type=4
+Path=
+FileList=P16F84.INC;
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [Trace-Config]
 GetAddress=1
 AddressWidth=5.000000
@@ -67,23 +70,6 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
-
-[GENII.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
-[PIC16F84.INC]
-Type=5
-Path=
-FileList=
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
 [P16F84.INC]
 Type=5
 Path=
@@ -91,49 +77,13 @@ FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
-
-[GENII2.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
-[X6.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
-[X7.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
-[LAB3.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
 [Windows]
-3=0010 136 201 616 739 9 4 16
-2=0000 c:\progra~1\mplab\genii\LAB3.asm 0 -4 394 460 9 0
-1=0040 293 350 781 638 9 4 16
-0=0020 409 9 809 361 9 0
-
+2=0004 306 446 1020 654 9 0
+1=0000 j:\asm\kav\lab10.asm 3 2 511 440 9 0
+0=0020 623 1 1023 353 9 0
+Modify=2 523 284 720 9 0
 [mru-list]
-1=c:\progra~1\mplab\genii\LAB3.asm
-2=c:\progra~1\mplab\genii\gen2.asm
-3=c:\progra~1\mplab\genii\x7.asm
-4=c:\progra~1\mplab\genii\genii2.asm
-5=c:\progra~1\mplab\genii\gen22.asm
-
+1=j:\asm\kav\lab10.asm
+2=j:\asm\kav\lab9.asm
+3=j:\asm\kav\lab8.asm
+4=d:\asm\kav\lab8.asm

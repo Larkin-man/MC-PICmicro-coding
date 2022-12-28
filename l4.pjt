@@ -1,9 +1,8 @@
 [PROJECT]
-Target=3D.HEX
+Target=LAB4.HEX
 Development_Mode=2
 Processor=0x684a
 ToolSuite=Microchip
-
 [Fuses]
 Frequency=4000000.000000
 ClockSource=1
@@ -25,35 +24,23 @@ DisableIoPins=0
 CPP2_ENABLE=0
 LPSC_ENABLE=0
 MCLRPU_ENABLE=0
-
 [Directories]
 Include=
 Library=
 LinkerScript=
-
 [Target Data]
-FileList=3D.ASM;
+FileList=LAB4.ASM;
 BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
 BuildRequired=0
-
-[LAB10.ASM]
+[LAB4.ASM]
 Type=4
 Path=
 FileList=P16F84.INC;
 BuildTool=
 OptionString=
 AdditionalOptionString=
-
-[PIC16F84.INC]
-Type=5
-Path=
-FileList=
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
 [Trace-Config]
 GetAddress=1
 AddressWidth=5.000000
@@ -83,7 +70,6 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
-
 [P16F84.INC]
 Type=5
 Path=
@@ -91,20 +77,9 @@ FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
-
-[3D.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
-
 [mru-list]
-1=c:\progra~1\mplab\3d.asm
-
-[Windows]
-2=0000 c:\progra~1\mplab\3d.asm 0 1 290 340 9 0
-1=0020 360 161 756 477 9 0
-0=0040 303 12 791 300 9 4 16
-
+1=d:\asm\kav\lab4.asm
+2=j:\asm\kav\lab4.asm
+3=j:\asm\kav\lab2.asm
+4=j:\asm\kav\lab3.asm
+5=j:\asm\kav\lab1.asm

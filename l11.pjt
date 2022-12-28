@@ -41,13 +41,6 @@ FileList=P16F84.INC;
 BuildTool=
 OptionString=
 AdditionalOptionString=
-[P16F84.INC]
-Type=5
-Path=
-FileList=
-BuildTool=
-OptionString=
-AdditionalOptionString=
 [Trace-Config]
 GetAddress=1
 AddressWidth=5.000000
@@ -77,14 +70,20 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
+[P16F84.INC]
+Type=5
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [Windows]
-3=0000 c:\progra~1\mplab\test\LAB11.asm 5 5 446 443 9 0
-2=0004 150 467 1020 634 9 0
-1=0002 C:\PROGRA~1\MPLAB\TEST\Watch_1.wat 451 8 693 150 9 0
-0=0020 695 8 1016 360 9 0
+2=0004 485 438 998 654 9 0
+1=0000 j:\asm\kav\lab11.asm 4 4 490 442 9 0
+0=0020 621 4 1021 356 9 0
 [mru-list]
-1=c:\progra~1\mplab\test\LAB11.asm
-2=c:\progra~1\mplab\alex\lab11.asm
-3=j:\asm\kav\lab11.asm
-4=j:\asm\kav\lab10.asm
-5=j:\asm\kav\lab9.asm
+1=j:\asm\kav\lab11.asm
+2=j:\asm\kav\lab10.asm
+3=j:\asm\kav\lab9.asm
+4=j:\asm\kav\lab8.asm
+5=d:\asm\kav\lab8.asm

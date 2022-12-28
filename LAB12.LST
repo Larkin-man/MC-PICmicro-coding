@@ -1,4 +1,4 @@
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  1
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -30,7 +30,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
                       00020 
 0105   1283           00021  BCF STATUS,RP0
 0106   0185           00022  CLRF PORTA
-0107   3000           00023  MOVLW B'00000'
+0107   301F           00023  MOVLW B'11111'
 0108   1683           00024  BSF STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 0109   0085           00025  MOVWF TRISA
@@ -57,13 +57,13 @@ Warning[203]: Found opcode in column 1. (GOTO)
 Warning[203]: Found opcode in column 1. (CALL)
 0113   211A           00038 CALL GETCURRENTFLOOR ;ќпределить текущий этаж
 Warning[203]: Found opcode in column 1. (CALL)
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  2
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0114   214B           00039 CALL GETPATH  ;Ќайти путь движени€
+0114   2148           00039 CALL GETPATH  ;Ќайти путь движени€
 Warning[203]: Found opcode in column 1. (BCF)
 0115   1386           00040 BCF PORTB,7
 Warning[203]: Found opcode in column 1. (BTFSS)
@@ -103,7 +103,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
                       00059 
 0126                  00060 MOVLIFT
 Warning[203]: Found opcode in column 1. (CALL)
-0126   2184           00061 CALL ZZZ
+0126   2171           00061 CALL P1s
 Warning[203]: Found opcode in column 1. (BTFSC)
 0127   1811           00062 BTFSC ARROW,0
 Warning[203]: Found opcode in column 1. (CALL)
@@ -116,7 +116,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
 012B   0008           00066 RETURN
                       00067 
 012C                  00068 MOVUP
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  3
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -124,7 +124,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 
 012C                  00069 CYC3
 Warning[203]: Found opcode in column 1. (CALL)
-012C   2184           00070 CALL ZZZ
+012C   2171           00070 CALL P1s
 Warning[203]: Found opcode in column 1. (BCF)
 012D   1003           00071 BCF STATUS,0
 Warning[203]: Found opcode in column 1. (RRF)
@@ -147,7 +147,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
 0136                  00081 MOVDOWN
 0136                  00082 CYC4
 Warning[203]: Found opcode in column 1. (CALL)
-0136   2184           00083 CALL ZZZ
+0136   2171           00083 CALL P1s
 Warning[203]: Found opcode in column 1. (BCF)
 0137   1003           00084 BCF STATUS,0
 Warning[203]: Found opcode in column 1. (RLF)
@@ -173,195 +173,183 @@ Warning[203]: Found opcode in column 1. (BCF)
 Warning[203]: Found opcode in column 1. (BSF)
 0141   1686           00096 BSF PORTB,5
 Warning[203]: Found opcode in column 1. (CALL)
-0142   2184           00097 CALL ZZZ
-Warning[203]: Found opcode in column 1. (CALL)
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  4
+0142   2175           00097 CALL P5s
+Warning[203]: Found opcode in column 1. (BCF)
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0143   2184           00098 CALL ZZZ
-Warning[203]: Found opcode in column 1. (CALL)
-0144   2184           00099 CALL ZZZ
-Warning[203]: Found opcode in column 1. (BCF)
-0145   1286           00100 BCF PORTB,5
+0143   1286           00098 BCF PORTB,5
 Warning[203]: Found opcode in column 1. (BSF)
-0146   1706           00101 BSF PORTB,6
+0144   1706           00099 BSF PORTB,6
 Warning[203]: Found opcode in column 1. (CALL)
-0147   2184           00102 CALL ZZZ
-Warning[203]: Found opcode in column 1. (CALL)
-0148   2184           00103 CALL ZZZ
+0145   2179           00100 CALL P2s
 Warning[203]: Found opcode in column 1. (BSF)
-0149   1786           00104 BSF PORTB,7
+0146   1786           00101 BSF PORTB,7
 Warning[203]: Found opcode in column 1. (RETURN)
-014A   0008           00105 RETURN
-                      00106 
-014B                  00107 GETPATH ;функци€ ищет направление движени€ и количество шагов
+0147   0008           00102 RETURN
+                      00103 
+0148                  00104 GETPATH ;функци€ ищет направление движени€ и количество шагов
 Warning[203]: Found opcode in column 1. (CALL)
-014B   214F           00108 CALL ISUP
+0148   214C           00105 CALL ISUP
 Warning[203]: Found opcode in column 1. (BTFSS)
-014C   1C11           00109 BTFSS ARROW,0
+0149   1C11           00106 BTFSS ARROW,0
 Warning[203]: Found opcode in column 1. (CALL)
-014D   2161           00110 CALL ISDOWN
+014A   215E           00107 CALL ISDOWN
 Warning[203]: Found opcode in column 1. (RETURN)
-014E   0008           00111 RETURN
-                      00112 
-014F                  00113 ISUP ;провер€ет верхнее напрвление
+014B   0008           00108 RETURN
+                      00109 
+014C                  00110 ISUP ;провер€ет верхнее напрвление
 Warning[203]: Found opcode in column 1. (MOVF)
-014F   080F           00114 MOVF CURRENTFLOOR,0
+014C   080F           00111 MOVF CURRENTFLOOR,0
 Warning[203]: Found opcode in column 1. (MOVWF)
-0150   008E           00115 MOVWF D3
+014D   008E           00112 MOVWF D3
 Warning[203]: Found opcode in column 1. (CLRF)
-0151   0191           00116 CLRF ARROW
+014E   0191           00113 CLRF ARROW
 Warning[203]: Found opcode in column 1. (CLRF)
-0152   0190           00117 CLRF COUNTSTEPS
+014F   0190           00114 CLRF COUNTSTEPS
 Warning[203]: Found opcode in column 1. (MOVLW)
-0153   3001           00118 MOVLW 01h
+0150   3001           00115 MOVLW 01h
 Warning[203]: Found opcode in column 1. (MOVWF)
-0154   008D           00119 MOVWF D2
-0155                  00120 CYC1
+0151   008D           00116 MOVWF D2
+0152                  00117 CYC1
 Warning[203]: Found opcode in column 1. (MOVF)
-0155   080E           00121 MOVF D3,0
+0152   080E           00118 MOVF D3,0
 Warning[203]: Found opcode in column 1. (XORWF)
-0156   060D           00122 XORWF D2,0
+0153   060D           00119 XORWF D2,0
 Warning[203]: Found opcode in column 1. (BTFSC)
-0157   1903           00123 BTFSC STATUS,Z
+0154   1903           00120 BTFSC STATUS,Z
 Warning[203]: Found opcode in column 1. (RETURN)
-0158   0008           00124 RETURN
+0155   0008           00121 RETURN
 Warning[203]: Found opcode in column 1. (INCF)
-0159   0A90           00125 INCF COUNTSTEPS,1
+0156   0A90           00122 INCF COUNTSTEPS,1
 Warning[203]: Found opcode in column 1. (RRF)
-015A   0C8E           00126 RRF D3,1
+0157   0C8E           00123 RRF D3,1
 Warning[203]: Found opcode in column 1. (MOVF)
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  5
+0158   080E           00124 MOVF D3,0
+Warning[203]: Found opcode in column 1. (XORWF)
+0159   0612           00125 XORWF PURPOSEFLOOR,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+015A   1D03           00126 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-015B   080E           00127 MOVF D3,0
-Warning[203]: Found opcode in column 1. (XORWF)
-015C   0612           00128 XORWF PURPOSEFLOOR,0
-Warning[203]: Found opcode in column 1. (BTFSS)
-015D   1D03           00129 BTFSS STATUS,Z
-Warning[203]: Found opcode in column 1. (GOTO)
-015E   2955           00130 GOTO CYC1
+015B   2952           00127 GOTO CYC1
 Warning[203]: Found opcode in column 1. (BSF)
-015F   1411           00131 BSF ARROW,0
+015C   1411           00128 BSF ARROW,0
 Warning[203]: Found opcode in column 1. (RETURN)
-0160   0008           00132 RETURN
-                      00133 
-0161                  00134 ISDOWN ;провер€ет нижнее напрвление
+015D   0008           00129 RETURN
+                      00130 
+015E                  00131 ISDOWN ;провер€ет нижнее напрвление
 Warning[203]: Found opcode in column 1. (BSF)
-0161   1791           00135 BSF ARROW,7
+015E   1791           00132 BSF ARROW,7
 Warning[203]: Found opcode in column 1. (CLRF)
-0162   0190           00136 CLRF COUNTSTEPS
+015F   0190           00133 CLRF COUNTSTEPS
 Warning[203]: Found opcode in column 1. (MOVF)
-0163   080F           00137 MOVF CURRENTFLOOR,0
+0160   080F           00134 MOVF CURRENTFLOOR,0
 Warning[203]: Found opcode in column 1. (MOVWF)
-0164   008E           00138 MOVWF D3
+0161   008E           00135 MOVWF D3
 Warning[203]: Found opcode in column 1. (MOVLW)
-0165   3010           00139 MOVLW B'00010000'
+0162   3010           00136 MOVLW B'00010000'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0166   008D           00140 MOVWF D2
-0167                  00141 CYC2
+0163   008D           00137 MOVWF D2
+0164                  00138 CYC2
 Warning[203]: Found opcode in column 1. (MOVF)
-0167   080E           00142 MOVF D3,0
+0164   080E           00139 MOVF D3,0
 Warning[203]: Found opcode in column 1. (XORWF)
-0168   060D           00143 XORWF D2,0
+0165   060D           00140 XORWF D2,0
 Warning[203]: Found opcode in column 1. (BTFSC)
-0169   1903           00144 BTFSC STATUS,Z
+0166   1903           00141 BTFSC STATUS,Z
 Warning[203]: Found opcode in column 1. (RETURN)
-016A   0008           00145 RETURN
+0167   0008           00142 RETURN
 Warning[203]: Found opcode in column 1. (INCF)
-016B   0A90           00146 INCF COUNTSTEPS,1
+0168   0A90           00143 INCF COUNTSTEPS,1
 Warning[203]: Found opcode in column 1. (RLF)
-016C   0D8E           00147 RLF D3,1
+0169   0D8E           00144 RLF D3,1
 Warning[203]: Found opcode in column 1. (MOVF)
-016D   080E           00148 MOVF D3,0
+016A   080E           00145 MOVF D3,0
 Warning[203]: Found opcode in column 1. (XORWF)
-016E   0612           00149 XORWF PURPOSEFLOOR,0
+016B   0612           00146 XORWF PURPOSEFLOOR,0
 Warning[203]: Found opcode in column 1. (BTFSS)
-016F   1D03           00150 BTFSS STATUS,Z
+016C   1D03           00147 BTFSS STATUS,Z
 Warning[203]: Found opcode in column 1. (GOTO)
-0170   2967           00151 GOTO CYC2
+016D   2964           00148 GOTO CYC2
 Warning[203]: Found opcode in column 1. (BCF)
-0171   1391           00152 BCF ARROW,7
+016E   1391           00149 BCF ARROW,7
 Warning[203]: Found opcode in column 1. (BCF)
-0172   1011           00153 BCF ARROW,0
+016F   1011           00150 BCF ARROW,0
 Warning[203]: Found opcode in column 1. (RETURN)
-0173   0008           00154 RETURN
-                      00155 
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  6
+0170   0008           00151 RETURN
+                      00152 
+0171                  00153 P1s
+Warning[203]: Found opcode in column 1. (MOVLW)
+0171   3014           00154 MOVLW D'20'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0172   008E           00155 MOVWF D3
+Warning[203]: Found opcode in column 1. (CALL)
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0174                  00156 P1s
-Warning[203]: Found opcode in column 1. (MOVLW)
-0174   3014           00157 MOVLW D'20'
-Warning[203]: Found opcode in column 1. (MOVWF)
-0175   008E           00158 MOVWF D3
-Warning[203]: Found opcode in column 1. (CALL)
-0176   2180           00159 CALL PULS
+0173   217D           00156 CALL PULS
 Warning[203]: Found opcode in column 1. (RETURN)
-0177   0008           00160 RETURN
-                      00161 
-0178                  00162 P5s
+0174   0008           00157 RETURN
+                      00158 
+0175                  00159 P5s
 Warning[203]: Found opcode in column 1. (MOVLW)
-0178   3066           00163 MOVLW D'102'
+0175   3066           00160 MOVLW D'102'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0179   008E           00164 MOVWF D3
+0176   008E           00161 MOVWF D3
 Warning[203]: Found opcode in column 1. (CALL)
-017A   2180           00165 CALL PULS
+0177   217D           00162 CALL PULS
 Warning[203]: Found opcode in column 1. (RETURN)
-017B   0008           00166 RETURN
-                      00167 
-017C                  00168 P2s
+0178   0008           00163 RETURN
+                      00164 
+0179                  00165 P2s
 Warning[203]: Found opcode in column 1. (MOVLW)
-017C   3029           00169 MOVLW D'41'
+0179   3029           00166 MOVLW D'41'
 Warning[203]: Found opcode in column 1. (MOVWF)
-017D   008E           00170 MOVWF D3
+017A   008E           00167 MOVWF D3
 Warning[203]: Found opcode in column 1. (CALL)
-017E   2180           00171 CALL PULS
+017B   217D           00168 CALL PULS
 Warning[203]: Found opcode in column 1. (RETURN)
-017F   0008           00172 RETURN
-                      00173 
-0180                  00174 PULS
-0180                  00175 C1
+017C   0008           00169 RETURN
+                      00170 
+017D                  00171 PULS
+017D                  00172 C1
 Warning[203]: Found opcode in column 1. (CALL)
-0180   2184           00176 CALL ZZZ
+017D   2181           00173 CALL ZZZ
 Warning[203]: Found opcode in column 1. (DECFSZ)
-0181   0B8E           00177 DECFSZ D3,1
+017E   0B8E           00174 DECFSZ D3,1
 Warning[203]: Found opcode in column 1. (GOTO)
-0182   2980           00178 GOTO C1
+017F   297D           00175 GOTO C1
 Warning[203]: Found opcode in column 1. (RETURN)
-0183   0008           00179 RETURN
-                      00180 
-0184                  00181 ZZZ ; ~0,04896125 sec
-0184   30FF           00182  MOVLW D'255'
-0185   008C           00183  MOVWF D1
-0186   008D           00184  MOVWF D2
+0180   0008           00176 RETURN
+                      00177 
+0181                  00178 ZZZ ; ~0,04896125 sec
+0181   30FF           00179  MOVLW D'255'
+0182   008C           00180  MOVWF D1
+0183   008D           00181  MOVWF D2
 Warning[207]: Found label after column 1. (LOOP1)
-0187                  00185  LOOP1
-0187   0B8C           00186  DECFSZ D1,1
-0188   2987           00187  GOTO LOOP1
-0189   0B8D           00188  DECFSZ D2,1
-018A   2987           00189  GOTO LOOP1
+0184                  00182  LOOP1
+0184   0B8C           00183  DECFSZ D1,1
+0185   2984           00184  GOTO LOOP1
+0186   0B8D           00185  DECFSZ D2,1
+0187   2984           00186  GOTO LOOP1
 Warning[203]: Found opcode in column 1. (RETURN)
-018B   0008           00190 RETURN
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  7
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00191 
+0188   0008           00187 RETURN
+                      00188 
 Warning[205]: Found directive in column 1. (END)
-                      00192 END
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  8
+                      00189 END
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  7
 
 
 SYMBOL TABLE
@@ -370,11 +358,11 @@ SYMBOL TABLE
 ARROW                             00000011
 BEGIN                             00000100
 C                                 00000000
-C1                                00000180
+C1                                0000017D
 COUNTSTEPS                        00000010
 CURRENTFLOOR                      0000000F
-CYC1                              00000155
-CYC2                              00000167
+CYC1                              00000152
+CYC2                              00000164
 CYC3                              0000012C
 CYC4                              00000136
 D1                                0000000C
@@ -390,7 +378,7 @@ EEIF                              00000004
 F                                 00000001
 FSR                               00000004
 GETCURRENTFLOOR                   0000011A
-GETPATH                           0000014B
+GETPATH                           00000148
 GIE                               00000007
 INDF                              00000000
 INTCON                            0000000B
@@ -398,9 +386,9 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-ISDOWN                            00000161
-ISUP                              0000014F
-LOOP1                             00000187
+ISDOWN                            0000015E
+ISUP                              0000014C
+LOOP1                             00000184
 MAINLOOP                          0000010D
 MOVDOWN                           00000136
 MOVLIFT                           00000126
@@ -409,9 +397,9 @@ NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
 OPTION_REG                        00000081
-P1s                               00000174
-P2s                               0000017C
-P5s                               00000178
+P1s                               00000171
+P2s                               00000179
+P5s                               00000175
 PCL                               00000002
 PCLATH                            0000000A
 PORTA                             00000005
@@ -420,13 +408,13 @@ PS0                               00000000
 PS1                               00000001
 PS2                               00000002
 PSA                               00000003
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE  9
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-PULS                              00000180
+PULS                              0000017D
 PURPOSEFLOOR                      00000012
 RBIE                              00000003
 RBIF                              00000000
@@ -447,7 +435,7 @@ WR                                00000001
 WREN                              00000002
 WRERR                             00000003
 Z                                 00000002
-ZZZ                               00000184
+ZZZ                               00000181
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
@@ -466,22 +454,22 @@ MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 0000 : X--------------- ---------------- ---------------- ----------------
 0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0180 : XXXXXXXXXXXX---- ---------------- ---------------- ----------------
+0180 : XXXXXXXXX------- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:   141
-Program Memory Words Free:   883
+Program Memory Words Used:   138
+Program Memory Words Free:   886
 
 
-MPASM 02.80 Released              LAB12.ASM   10-30-2010  0:31:09         PAGE 10
+MPASM 02.80 Released            LAB12.ASM   3-30-2009  13:28:23         PAGE  9
 
 
 
 
 
 Errors   :     0
-Warnings :   124 reported,     0 suppressed
+Warnings :   121 reported,     0 suppressed
 Messages :     2 reported,     0 suppressed
 
 

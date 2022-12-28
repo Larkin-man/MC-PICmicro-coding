@@ -1,222 +1,232 @@
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  1
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00001 ;Программа №3 по ТС А и У
-                      00002 #include<p16f84.inc>
+                      00001 #include<p16f84.inc>
                       00001         LIST
                       00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
                       00136         LIST
-Warning[205]: Found directive in column 1. (list)
-                      00003 list p=16f84
-                      00004 
-  0000000C            00005 PROMRESULT EQU 0Ch
-  0000000D            00006 PROMRESULT1 EQU 0Dh
-                      00007 
-Warning[203]: Found opcode in column 1. (MOVLW)
-0000   301F           00008 MOVLW B'11111'
-Warning[203]: Found opcode in column 1. (TRIS)
-Warning[224]: Use of this instruction is not recommended.
-0001   0065           00009 TRIS PORTA
-Warning[203]: Found opcode in column 1. (OPTION)
-Warning[224]: Use of this instruction is not recommended.
-0002   0062           00010 OPTION
-Warning[203]: Found opcode in column 1. (MOVLW)
-0003   3000           00011 MOVLW 0
-Warning[203]: Found opcode in column 1. (TRIS)
-Warning[224]: Use of this instruction is not recommended.
-0004   0066           00012 TRIS PORTB
-Warning[203]: Found opcode in column 1. (OPTION)
-Warning[224]: Use of this instruction is not recommended.
-0005   0062           00013 OPTION
-                      00014 
-0006                  00015 BEGIN
-                      00016 
-Warning[203]: Found opcode in column 1. (CLRF)
-0006   018C           00017 CLRF PROMRESULT
-Warning[203]: Found opcode in column 1. (CLRF)
-0007   018D           00018 CLRF PROMRESULT1
-                      00019 ;CLRF PORTA
-                      00020 ;CLRF PORTB
-Warning[203]: Found opcode in column 1. (MOVLW)
-0008   301E           00021 MOVLW B'11110'
-Warning[203]: Found opcode in column 1. (SUBWF)
-0009   0205           00022 SUBWF PORTA,0
-Warning[203]: Found opcode in column 1. (BTFSC)
-000A   1903           00023 BTFSC STATUS,Z
-Warning[203]: Found opcode in column 1. (CALL)
-000B   2011           00024 CALL PODPR1
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+  0000000C            00007 D1 EQU 0Ch
+  0000000D            00008 D2 EQU 0Dh
+  0000000E            00009 D3 EQU 0Eh
+  0000000F            00010 D4 EQU 0Fh
+  00000010            00011 D5 EQU 010h
+                      00012 
+0100   1283           00013  BCF STATUS,RP0
+0101   0186           00014  CLRF PORTB
+0102   3000           00015  MOVLW B'00000000'
+0103   1683           00016  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00017  MOVWF TRISB
+                      00018 
+0105   1283           00019  BCF STATUS,RP0
+0106   0185           00020  CLRF PORTA
+0107   301F           00021  MOVLW B'11111'
+0108   1683           00022  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0109   0085           00023  MOVWF TRISA
+010A   1283           00024  BCF STATUS,RP0
                       00025 
+010B                  00026 MAINLOOP
+Warning[203]: Found opcode in column 1. (MOVF)
+010B   0805           00027 MOVF PORTA,0
+Warning[203]: Found opcode in column 1. (MOVWF)
+010C   0090           00028 MOVWF D5
 Warning[203]: Found opcode in column 1. (MOVLW)
-000C   301D           00026 MOVLW B'11101'
-Warning[203]: Found opcode in column 1. (SUBWF)
-000D   0205           00027 SUBWF PORTA,0
+010D   3010           00029 MOVLW B'10000'
+Warning[203]: Found opcode in column 1. (XORWF)
+010E   0610           00030 XORWF D5,0
 Warning[203]: Found opcode in column 1. (BTFSC)
-000E   1903           00028 BTFSC STATUS,Z
+010F   1903           00031 BTFSC STATUS,Z
 Warning[203]: Found opcode in column 1. (CALL)
-000F   2025           00029 CALL PODPR2
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  2
+0110   2122           00032 CALL i0d5p9
+Warning[203]: Found opcode in column 1. (MOVLW)
+0111   3008           00033 MOVLW B'01000'
+Warning[203]: Found opcode in column 1. (XORWF)
+0112   0610           00034 XORWF D5,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+0113   1903           00035 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+0114   2128           00036 CALL i4p2
+Warning[203]: Found opcode in column 1. (MOVLW)
+0115   3004           00037 MOVLW B'00100'
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-Warning[203]: Found opcode in column 1. (GOTO)
-0010   2806           00030 GOTO BEGIN
-                      00031 
-0011                  00032 PODPR1
-0011                  00033 N
+Warning[203]: Found opcode in column 1. (XORWF)
+0116   0610           00038 XORWF D5,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+0117   1903           00039 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+0118   212E           00040 CALL i7p8d5
 Warning[203]: Found opcode in column 1. (MOVLW)
-0011   3000           00034 MOVLW D'0'
+0119   3002           00041 MOVLW B'00010'
+Warning[203]: Found opcode in column 1. (XORWF)
+011A   0610           00042 XORWF D5,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+011B   1903           00043 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+011C   2134           00044 CALL i1d5p8
+Warning[203]: Found opcode in column 1. (MOVLW)
+011D   3001           00045 MOVLW B'00001'
+Warning[203]: Found opcode in column 1. (XORWF)
+011E   0610           00046 XORWF D5,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+011F   1903           00047 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+0120   213A           00048 CALL i2p5
+Warning[203]: Found opcode in column 1. (GOTO)
+0121   290B           00049 GOTO MAINLOOP
+                      00050 
+                      00051 
+0122                  00052 i0d5p9
+Warning[203]: Found opcode in column 1. (MOVLW)
+0122   300A           00053 MOVLW D'10'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0012   0086           00035 MOVWF PORTB 
+0123   008E           00054 MOVWF D3
 Warning[203]: Found opcode in column 1. (MOVLW)
-0013   3081           00036 MOVLW D'129'
+0124   30B8           00055 MOVLW D'184'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0125   008F           00056 MOVWF D4
 Warning[203]: Found opcode in column 1. (CALL)
-0014   203B           00037 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-0015   30C3           00038 MOVLW D'195'
-Warning[203]: Found opcode in column 1. (CALL)
-0016   203B           00039 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-0017   30E7           00040 MOVLW D'231'
-Warning[203]: Found opcode in column 1. (CALL)
-0018   203B           00041 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-0019   30FF           00042 MOVLW D'255'
-Warning[203]: Found opcode in column 1. (CALL)
-001A   203B           00043 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-001B   30E7           00044 MOVLW D'231'
-Warning[203]: Found opcode in column 1. (CALL)
-001C   203B           00045 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-001D   30C3           00046 MOVLW D'195'
-Warning[203]: Found opcode in column 1. (CALL)
-001E   203B           00047 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-001F   3081           00048 MOVLW D'129'
-Warning[203]: Found opcode in column 1. (CALL)
-0020   203B           00049 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVLW)
-0021   3000           00050 MOVLW D'0'
-Warning[203]: Found opcode in column 1. (CALL)
-0022   203B           00051 CALL VSPPODPR1
-Warning[203]: Found opcode in column 1. (GOTO)
-0023   2811           00052 GOTO N
+0126   2140           00057 CALL PULS
 Warning[203]: Found opcode in column 1. (RETURN)
-0024   0008           00053 RETURN
-                      00054 
-0025                  00055 PODPR2
-0025                  00056 M
+0127   0008           00058 RETURN
+                      00059 
+0128                  00060 i4p2
 Warning[203]: Found opcode in column 1. (MOVLW)
-0025   3000           00057 MOVLW D'0'
+0128   3052           00061 MOVLW D'82'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0026   0086           00058 MOVWF PORTB 
+0129   008E           00062 MOVWF D3
 Warning[203]: Found opcode in column 1. (MOVLW)
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  3
+012A   3029           00063 MOVLW D'41'
+Warning[203]: Found opcode in column 1. (MOVWF)
+012B   008F           00064 MOVWF D4
+Warning[203]: Found opcode in column 1. (CALL)
+012C   2140           00065 CALL PULS
+Warning[203]: Found opcode in column 1. (RETURN)
+012D   0008           00066 RETURN
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0027   3081           00059 MOVLW D'129'
-Warning[203]: Found opcode in column 1. (CALL)
-0028   2042           00060 CALL VSPPODPR2
+                      00067 
+012E                  00068 i7p8d5
 Warning[203]: Found opcode in column 1. (MOVLW)
-0029   3042           00061 MOVLW D'66'
-Warning[203]: Found opcode in column 1. (CALL)
-002A   2042           00062 CALL VSPPODPR2
-Warning[203]: Found opcode in column 1. (MOVLW)
-002B   3024           00063 MOVLW D'36'
-Warning[203]: Found opcode in column 1. (CALL)
-002C   2042           00064 CALL VSPPODPR2
-Warning[203]: Found opcode in column 1. (MOVLW)
-002D   3018           00065 MOVLW D'24'
-Warning[203]: Found opcode in column 1. (CALL)
-002E   2042           00066 CALL VSPPODPR2
-Warning[203]: Found opcode in column 1. (GOTO)
-002F   2825           00067 GOTO M
-Warning[203]: Found opcode in column 1. (RETURN)
-0030   0008           00068 RETURN
-                      00069 
-0031                  00070 ZADER
-Warning[203]: Found opcode in column 1. (MOVLW)
-0031   30FF           00071 MOVLW D'255'
+012E   308F           00069 MOVLW D'143'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0032   008C           00072 MOVWF PROMRESULT
+012F   008E           00070 MOVWF D3
+Warning[203]: Found opcode in column 1. (MOVLW)
+0130   30AE           00071 MOVLW D'174'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0033   008D           00073 MOVWF PROMRESULT1
-0034                  00074 P
-0034                  00075 WP
-Warning[203]: Found opcode in column 1. (NOP)
-0034   0000           00076 NOP
-Warning[203]: Found opcode in column 1. (DECFSZ)
-0035   0B8C           00077 DECFSZ PROMRESULT,1
-Warning[203]: Found opcode in column 1. (GOTO)
-0036   2834           00078 GOTO WP
-Warning[203]: Found opcode in column 1. (NOP)
-0037   0000           00079 NOP
-Warning[203]: Found opcode in column 1. (DECFSZ)
-0038   0B8D           00080 DECFSZ PROMRESULT1,1
-Warning[203]: Found opcode in column 1. (GOTO)
-0039   2834           00081 GOTO P
+0131   008F           00072 MOVWF D4
+Warning[203]: Found opcode in column 1. (CALL)
+0132   2140           00073 CALL PULS
 Warning[203]: Found opcode in column 1. (RETURN)
-003A   0008           00082 RETURN
+0133   0008           00074 RETURN
+                      00075 
+0134                  00076 i1d5p8
+Warning[203]: Found opcode in column 1. (MOVLW)
+0134   301F           00077 MOVLW D'31'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0135   008E           00078 MOVWF D3
+Warning[203]: Found opcode in column 1. (MOVLW)
+0136   30A3           00079 MOVLW D'163'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0137   008F           00080 MOVWF D4
+Warning[203]: Found opcode in column 1. (CALL)
+0138   2140           00081 CALL PULS
+Warning[203]: Found opcode in column 1. (RETURN)
+0139   0008           00082 RETURN
                       00083 
-003B                  00084 VSPPODPR1
-Warning[203]: Found opcode in column 1. (MOVWF)
-003B   0086           00085 MOVWF PORTB
-Warning[203]: Found opcode in column 1. (CALL)
-003C   2031           00086 CALL ZADER
+013A                  00084 i2p5
 Warning[203]: Found opcode in column 1. (MOVLW)
-003D   301E           00087 MOVLW B'11110'
-Warning[203]: Found opcode in column 1. (SUBWF)
-003E   0205           00088 SUBWF PORTA,0
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  4
+013A   3029           00085 MOVLW D'41'
+Warning[203]: Found opcode in column 1. (MOVWF)
+013B   008E           00086 MOVWF D3
+Warning[203]: Found opcode in column 1. (MOVLW)
+013C   3066           00087 MOVLW D'102'
+Warning[203]: Found opcode in column 1. (MOVWF)
+013D   008F           00088 MOVWF D4
+Warning[203]: Found opcode in column 1. (CALL)
+013E   2140           00089 CALL PULS
+Warning[203]: Found opcode in column 1. (RETURN)
+013F   0008           00090 RETURN
+                      00091 
+0140                  00092 PULS
+Warning[203]: Found opcode in column 1. (MOVLW)
+0140   30FF           00093 MOVLW B'11111111'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0141   0086           00094 MOVWF PORTB
+0142                  00095 C1
+Warning[203]: Found opcode in column 1. (CALL)
+0142   214B           00096 CALL ZZZ
+Warning[203]: Found opcode in column 1. (DECFSZ)
+0143   0B8E           00097 DECFSZ D3,1
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-Warning[203]: Found opcode in column 1. (BTFSC)
-003F   1903           00089 BTFSC STATUS,Z
-Warning[203]: Found opcode in column 1. (RETURN)
-0040   0008           00090 RETURN
-                      00091 
 Warning[203]: Found opcode in column 1. (GOTO)
-0041   2806           00092 GOTO BEGIN
-                      00093 
-0042                  00094 VSPPODPR2
+0144   2942           00098 GOTO C1
+Warning[203]: Found opcode in column 1. (CLRW)
+0145   0103           00099 CLRW
 Warning[203]: Found opcode in column 1. (MOVWF)
-0042   0086           00095 MOVWF PORTB
+0146   0086           00100 MOVWF PORTB
+0147                  00101 C2
 Warning[203]: Found opcode in column 1. (CALL)
-0043   2031           00096 CALL ZADER
-Warning[203]: Found opcode in column 1. (MOVLW)
-0044   301D           00097 MOVLW B'11101'
-Warning[203]: Found opcode in column 1. (SUBWF)
-0045   0205           00098 SUBWF PORTA,0
-Warning[203]: Found opcode in column 1. (BTFSC)
-0046   1903           00099 BTFSC STATUS,Z
-Warning[203]: Found opcode in column 1. (RETURN)
-0047   0008           00100 RETURN
-                      00101 
-                      00102 
+0147   214B           00102 CALL ZZZ
+Warning[203]: Found opcode in column 1. (DECFSZ)
+0148   0B8F           00103 DECFSZ D4,1
 Warning[203]: Found opcode in column 1. (GOTO)
-0048   2806           00103 GOTO BEGIN
-                      00104 
+0149   2947           00104 GOTO C2
+Warning[203]: Found opcode in column 1. (RETURN)
+014A   0008           00105 RETURN
+                      00106 
+014B                  00107 ZZZ ; ~0,04896125 sec
+014B   30FF           00108  MOVLW D'255'
+014C   008C           00109  MOVWF D1
+014D   008D           00110  MOVWF D2
+Warning[207]: Found label after column 1. (LOOP1)
+014E                  00111  LOOP1
+014E   0B8C           00112  DECFSZ D1,1
+014F   294E           00113  GOTO LOOP1
+0150   0B8D           00114  DECFSZ D2,1
+0151   294E           00115  GOTO LOOP1
+Warning[203]: Found opcode in column 1. (RETURN)
+0152   0008           00116 RETURN
+                      00117 
 Warning[205]: Found directive in column 1. (END)
-                      00105 END
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  5
+                      00118 END
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-BEGIN                             00000006
+BEGIN                             00000100
 C                                 00000000
+C1                                00000142
+C2                                00000147
+D1                                0000000C
+D2                                0000000D
+D3                                0000000E
+D4                                0000000F
+D5                                00000010
 DC                                00000001
 EEADR                             00000009
 EECON1                            00000088
@@ -233,25 +243,21 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-M                                 00000025
-N                                 00000011
+LOOP1                             0000014E
+MAINLOOP                          0000010B
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
 OPTION_REG                        00000081
-P                                 00000034
 PCL                               00000002
 PCLATH                            0000000A
-PODPR1                            00000011
-PODPR2                            00000025
 PORTA                             00000005
 PORTB                             00000006
-PROMRESULT                        0000000C
-PROMRESULT1                       0000000D
 PS0                               00000000
 PS1                               00000001
 PS2                               00000002
 PSA                               00000003
+PULS                              00000140
 RBIE                              00000003
 RBIF                              00000000
 RD                                00000000
@@ -265,21 +271,18 @@ T0SE                              00000004
 TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
-VSPPODPR1                         0000003B
-VSPPODPR2                         00000042
-W                                 00000000
-MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  6
+MPASM 02.80 Released            LAB10.ASM   3-29-2009  11:27:26         PAGE  6
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-WP                                00000034
+W                                 00000000
 WR                                00000001
 WREN                              00000002
 WRERR                             00000003
 Z                                 00000002
-ZADER                             00000031
+ZZZ                               0000014B
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
@@ -291,21 +294,27 @@ _WDT_OFF                          00003FFB
 _WDT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F84                           00000001
+i0d5p9                            00000122
+i1d5p8                            00000134
+i2p5                              0000013A
+i4p2                              00000128
+i7p8d5                            0000012E
 
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0040 : XXXXXXXXX------- ---------------- ---------------- ----------------
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXX------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    73
-Program Memory Words Free:   951
+Program Memory Words Used:    84
+Program Memory Words Free:   940
 
 
 Errors   :     0
-Warnings :    79 reported,     0 suppressed
-Messages :     0 reported,     0 suppressed
+Warnings :    67 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
 
 
