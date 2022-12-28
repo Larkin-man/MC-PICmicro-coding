@@ -1,4 +1,4 @@
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  1
+MPASM 02.80 Released            LAB4.ASM   12-2-2003  15:55:08         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -8,11 +8,11 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00001         LIST
                       00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
                       00136         LIST
-2007   3FF1           00002  __CONFIG  _XT_OSC & _CP_OFF & _PWRTE_ON & _WDT_OFF 
+                      00002 
                       00003 ; ячейки ОЗУ
   0000000C            00004 SCRATCH         EQU     0Ch
   0000000D            00005 DIGIT           EQU     0Dh
-  0000000E            00006 DAS             EQU     0Eh
+  0000000E            00006 DIG             EQU     0Eh
   00000000            00007 INITA           EQU     B'00000000'
   00000000            00008 INITB           EQU     B'00000000'
 0000                  00009         ORG     0
@@ -35,22 +35,37 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 0109   0086           00025         MOVWF   TRISB         ;Все разряды порта В установить как выходы 
                       00026 ;
-010A                  00027 NACH
-010A   1283           00028         BCF     STATUS,RP0  
-                      00029 
-010B   3005           00030         MOVLW   D'5'
-010C   008E           00031         MOVWF   DAS
-                      00032 
-010D   0103           00033         CLRW
-010E                  00034 LOOP
-010E   3E02           00035         ADDLW   D'2'
-010F   0B8E           00036         DECFSZ  DAS, 1
-0110   290E           00037         GOTO    LOOP
-                      00038 
-0111   0086           00039         MOVWF   PORTB
+010A   1283           00027         BCF     STATUS,RP0    ;Выбор банка 0
+                      00028 
+Warning[203]: Found opcode in column 1. (MOVLW)
+010B   3002           00029 MOVLW D'2'
+Warning[203]: Found opcode in column 1. (MOVWF)
+010C   0086           00030 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CLRW)
+010D   0103           00031 CLRW
+Warning[203]: Found opcode in column 1. (MOVLW)
+010E   300C           00032 MOVLW D'12'
+Warning[203]: Found opcode in column 1. (MOVWF)
+010F   008D           00033 MOVWF DIGIT
+Warning[203]: Found opcode in column 1. (DECF)
+0110   038D           00034 DECF DIGIT,1
+0111                  00035 METKA
+Warning[203]: Found opcode in column 1. (ADDWF)
+0111   0786           00036 ADDWF PORTB,1
+Warning[203]: Found opcode in column 1. (DECFSZ)
+0112   0B8D           00037 DECFSZ DIGIT,1
+Warning[203]: Found opcode in column 1. (GOTO)
+0113   2911           00038 GOTO METKA
+                      00039 
+MPASM 02.80 Released            LAB4.ASM   12-2-2003  15:55:08         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
 Warning[205]: Found directive in column 1. (END)
                       00040 END
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  2
+MPASM 02.80 Released            LAB4.ASM   12-2-2003  15:55:08         PAGE  3
 
 
 SYMBOL TABLE
@@ -58,8 +73,8 @@ SYMBOL TABLE
 
 BEGIN                             00000100
 C                                 00000000
-DAS                               0000000E
 DC                                00000001
+DIG                               0000000E
 DIGIT                             0000000D
 EEADR                             00000009
 EECON1                            00000088
@@ -78,8 +93,7 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000010E
-NACH                              0000010A
+METKA                             00000111
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
@@ -109,13 +123,13 @@ TRISB                             00000086
 W                                 00000000
 WR                                00000001
 WREN                              00000002
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  3
+WRERR                             00000003
+MPASM 02.80 Released            LAB4.ASM   12-2-2003  15:55:08         PAGE  4
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-WRERR                             00000003
 Z                                 00000002
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
@@ -133,17 +147,16 @@ __16F84                           00000001
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X--------------- ---------------- ---------------- ----------------
-0100 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
-2000 : -------X-------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXX------------ ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    19
-Program Memory Words Free:  1005
+Program Memory Words Used:    21
+Program Memory Words Free:  1003
 
 
 Errors   :     0
-Warnings :     1 reported,     0 suppressed
+Warnings :    10 reported,     0 suppressed
 Messages :     2 reported,     0 suppressed
 
 

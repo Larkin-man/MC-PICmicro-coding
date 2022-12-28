@@ -1,9 +1,9 @@
 #include<p16f84.inc>
- __CONFIG  _XT_OSC & _CP_OFF & _PWRTE_ON & _WDT_OFF 
+
 ; ячейки ОЗУ
 SCRATCH         EQU     0Ch
 DIGIT           EQU     0Dh
-DAS             EQU     0Eh
+DIG		EQU	0Eh
 INITA           EQU     B'00000000'
 INITB           EQU     B'00000000'
         ORG     0
@@ -24,17 +24,18 @@ BEGIN
         BSF     STATUS,RP0    ;Выбор банка 1
         MOVWF   TRISB         ;Все разряды порта В установить как выходы 
 ;
-NACH
-        BCF     STATUS,RP0  
+        BCF     STATUS,RP0    ;Выбор банка 0
 
-	MOVLW	D'5'
-	MOVWF	DAS
+MOVLW D'2'
+MOVWF PORTB
+CLRW
+MOVLW D'12'
+MOVWF DIGIT
+DECF DIGIT,1
+METKA
+ADDWF PORTB,1
+DECFSZ DIGIT,1
+GOTO METKA
 
-	CLRW
-LOOP
-	ADDLW	D'2'
-	DECFSZ	DAS, 1
-	GOTO 	LOOP
-
-	MOVWF	PORTB
 END
+
