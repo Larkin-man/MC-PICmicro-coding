@@ -1,0 +1,314 @@
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+  0000000C            00007 SCRATCH EQU 0Ch
+  0000000D            00008 DIGIT EQU 0Dh
+  0000000E            00009 SAVE EQU 0Eh
+                      00010 
+0100   1283           00011  BCF STATUS,RP0
+0101   0186           00012  CLRF PORTB
+0102   3000           00013  MOVLW B'00000000'
+0103   1683           00014  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00015  MOVWF TRISB
+0105   1283           00016  BCF STATUS,RP0
+                      00017 
+0106   0185           00018  CLRF PORTA
+0107   3000           00019  MOVLW B'00000'  ;11111
+0108   1683           00020  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0109   0085           00021  MOVWF TRISA
+010A   1283           00022  BCF STATUS,RP0
+                      00023  
+010B   30FF           00024  MOVLW 0FF
+010C   0086           00025  MOVWF PORTB
+                      00026  
+010D   0805           00027  MOVF PORTA,0
+010E   3A10           00028  XORLW B'10000' 
+010F   1903           00029  BTFSC STATUS,Z
+0110   008E           00030  MOVWF SAVE
+                      00031  
+0111   2194           00032  CALL PAUSE
+                      00033  
+0112   0A8E           00034  INCF SAVE,1
+0113   080E           00035  MOVF SAVE,0
+0114   0086           00036  MOVWF PORTB
+0115   2194           00037  CALL PAUSE
+                      00038 
+0116   0A8E           00039  INCF SAVE,1
+0117   080E           00040  MOVF SAVE,0
+0118   0086           00041  MOVWF PORTB
+0119   2194           00042  CALL PAUSE
+                      00043 
+011A   0A8E           00044  INCF SAVE,1
+011B   080E           00045  MOVF SAVE,0
+011C   0086           00046  MOVWF PORTB
+011D   2194           00047  CALL PAUSE
+011E   0A8E           00048  INCF SAVE,1
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+011F   080E           00049  MOVF SAVE,0
+0120   0086           00050  MOVWF PORTB
+0121   2194           00051  CALL PAUSE
+0122   0A8E           00052  INCF SAVE,1
+0123   080E           00053  MOVF SAVE,0
+0124   0086           00054  MOVWF PORTB
+0125   2194           00055  CALL PAUSE
+0126   0A8E           00056  INCF SAVE,1
+0127   080E           00057  MOVF SAVE,0
+0128   0086           00058  MOVWF PORTB
+0129   2194           00059  CALL PAUSE
+012A   0A8E           00060  INCF SAVE,1
+012B   080E           00061  MOVF SAVE,0
+012C   0086           00062  MOVWF PORTB
+012D   2194           00063  CALL PAUSE
+012E   0A8E           00064  INCF SAVE,1
+012F   080E           00065  MOVF SAVE,0
+0130   0086           00066  MOVWF PORTB
+0131   2194           00067  CALL PAUSE
+0132   0A8E           00068  INCF SAVE,1
+0133   080E           00069  MOVF SAVE,0
+0134   0086           00070  MOVWF PORTB
+0135   2194           00071  CALL PAUSE
+0136   0A8E           00072  INCF SAVE,1
+0137   080E           00073  MOVF SAVE,0
+0138   0086           00074  MOVWF PORTB
+0139   2194           00075  CALL PAUSE
+013A   0A8E           00076  INCF SAVE,1
+013B   080E           00077  MOVF SAVE,0
+013C   0086           00078  MOVWF PORTB
+013D   2194           00079  CALL PAUSE
+013E   0A8E           00080  INCF SAVE,1
+013F   080E           00081  MOVF SAVE,0
+0140   0086           00082  MOVWF PORTB
+0141   2194           00083  CALL PAUSE
+0142   0A8E           00084  INCF SAVE,1
+0143   080E           00085  MOVF SAVE,0
+0144   0086           00086  MOVWF PORTB
+0145   2194           00087  CALL PAUSE
+0146   0A8E           00088  INCF SAVE,1
+0147   080E           00089  MOVF SAVE,0
+0148   0086           00090  MOVWF PORTB
+0149   2194           00091  CALL PAUSE
+014A   0A8E           00092  INCF SAVE,1
+014B   080E           00093  MOVF SAVE,0
+014C   0086           00094  MOVWF PORTB
+014D   2194           00095  CALL PAUSE
+014E   0A8E           00096  INCF SAVE,1
+014F   080E           00097  MOVF SAVE,0
+0150   0086           00098  MOVWF PORTB
+0151   2194           00099  CALL PAUSE
+0152   0A8E           00100  INCF SAVE,1
+0153   080E           00101  MOVF SAVE,0
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0154   0086           00102  MOVWF PORTB
+0155   2194           00103  CALL PAUSE
+0156   0A8E           00104  INCF SAVE,1
+0157   080E           00105  MOVF SAVE,0
+0158   0086           00106  MOVWF PORTB
+0159   2194           00107  CALL PAUSE
+015A   0A8E           00108  INCF SAVE,1
+015B   080E           00109  MOVF SAVE,0
+015C   0086           00110  MOVWF PORTB
+015D   2194           00111  CALL PAUSE
+015E   0A8E           00112  INCF SAVE,1
+015F   080E           00113  MOVF SAVE,0
+0160   0086           00114  MOVWF PORTB
+0161   2194           00115  CALL PAUSE
+0162   0A8E           00116  INCF SAVE,1
+0163   080E           00117  MOVF SAVE,0
+0164   0086           00118  MOVWF PORTB
+0165   2194           00119  CALL PAUSE
+0166   0A8E           00120  INCF SAVE,1
+0167   080E           00121  MOVF SAVE,0
+0168   0086           00122  MOVWF PORTB
+0169   2194           00123  CALL PAUSE
+016A   0A8E           00124  INCF SAVE,1
+016B   080E           00125  MOVF SAVE,0
+016C   0086           00126  MOVWF PORTB
+016D   2194           00127  CALL PAUSE
+016E   0A8E           00128  INCF SAVE,1
+016F   080E           00129  MOVF SAVE,0
+0170   0086           00130  MOVWF PORTB
+0171   2194           00131  CALL PAUSE
+0172   0A8E           00132  INCF SAVE,1
+0173   080E           00133  MOVF SAVE,0
+0174   0086           00134  MOVWF PORTB
+0175   2194           00135  CALL PAUSE
+0176   0A8E           00136  INCF SAVE,1
+0177   080E           00137  MOVF SAVE,0
+0178   0086           00138  MOVWF PORTB
+0179   2194           00139  CALL PAUSE
+017A   0A8E           00140  INCF SAVE,1
+017B   080E           00141  MOVF SAVE,0
+017C   0086           00142  MOVWF PORTB
+017D   2194           00143  CALL PAUSE
+017E   0A8E           00144  INCF SAVE,1
+017F   080E           00145  MOVF SAVE,0
+0180   0086           00146  MOVWF PORTB
+0181   2194           00147  CALL PAUSE
+                      00148 
+0182   30FF           00149  MOVLW 0FF ;Ã»√¿Õ»≈ ¬—≈’ —¬≈“Œƒ»ŒƒŒ¬
+0183   0086           00150  MOVWF PORTB
+0184   2194           00151  CALL PAUSE
+0185   0186           00152  CLRF PORTB
+0186   2194           00153  CALL PAUSE
+0187   30FF           00154  MOVLW 0FF
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0188   0086           00155  MOVWF PORTB
+0189   2194           00156  CALL PAUSE
+018A   0186           00157  CLRF PORTB
+                      00158 
+                      00159 
+Warning[207]: Found label after column 1. (ZZZ)
+018B                  00160  ZZZ ; ◊‡ÒÚÓÚ‡ ÏË„‡ÌËˇ 1√ˆ
+018B   30FF           00161  MOVLW D'255'
+018C   008D           00162  MOVWF DIGIT
+018D                  00163 THREE
+018D   30FF           00164  MOVLW D'255'
+018E   008C           00165  MOVWF SCRATCH
+018F                  00166 FOUR
+018F   0B8C           00167  DECFSZ SCRATCH,1
+0190   298F           00168  GOTO FOUR
+0191   0B8D           00169  DECFSZ DIGIT,1
+0192   298D           00170  GOTO THREE
+0193   0008           00171  RETURN
+                      00172 
+0194                  00173 PAUSE ; ~0,04896125 sec
+0194   0064           00174  CLRWDT
+0195   30FF           00175  MOVLW D'255'
+0196   008C           00176  MOVWF SCRATCH
+0197   008D           00177  MOVWF DIGIT
+0198                  00178 TWO
+0198   0B8C           00179  DECFSZ SCRATCH,1
+0199   2998           00180  GOTO TWO
+019A   0B8D           00181  DECFSZ DIGIT,1
+019B   2998           00182  GOTO TWO
+019C   0008           00183  RETURN
+                      00184 
+                      00185  END
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+DIGIT                             0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FOUR                              0000018F
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PAUSE                             00000194
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+SAVE                              0000000E
+SCRATCH                           0000000C
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+THREE                             0000018D
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+TWO                               00000198
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+MPASM 02.80 Released              AP4.ASM   10-29-2010  21:37:49         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WRERR                             00000003
+Z                                 00000002
+ZZZ                               0000018B
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXX--- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   158
+Program Memory Words Free:   866
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+

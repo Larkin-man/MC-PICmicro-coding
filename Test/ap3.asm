@@ -1,0 +1,37 @@
+#include<p16f84.inc>
+ ORG 0
+ GOTO BEGIN
+ ORG 100h
+BEGIN
+
+SCRATCH EQU 0Ch
+DIGIT EQU 0Dh
+CODER EQU 0Eh
+MOTO EQU 0Fh
+
+ BCF STATUS,RP0
+ CLRF PORTB
+ MOVLW B'00000000'
+ BSF STATUS,RP0
+ MOVWF TRISB
+ BCF STATUS,RP0
+
+ MOVLW B'00000000'
+ ;MOVWF MOTO      ;ЭТО ЧИСТО ОЧИСТИТЬ еедата НУЖНО;
+
+ MOVLW B'10110101' ; ЭТО МОЖНО СПЕРВА ПОМЕНЯТЬ
+ MOVWF CODER
+
+ MOVF MOTO,0
+ XORWF CODER,0     ;Если eedata и coder 
+ BTFSC STATUS,Z    ;cовпадают то выполняется
+ MOVLW B'11100111' ;<-эта команда
+
+ MOVWF PORTB
+
+ MOVLW B'10110101'
+ MOVWF MOTO
+ 
+ GOTO $
+
+ END

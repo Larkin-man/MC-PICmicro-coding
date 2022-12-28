@@ -1,0 +1,167 @@
+MPASM 02.80 Released            TEST3.ASM   9-27-2010  23:06:58         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+Warning[207]: Found label after column 1. (SCRATCH)
+  0000000C            00007  SCRATCH EQU 0Ch
+Warning[207]: Found label after column 1. (DIGIT)
+  0000000D            00008  DIGIT EQU 0Dh 
+Warning[207]: Found label after column 1. (REG)
+  0000000E            00009  REG EQU 0Eh
+                      00010 
+0100   1283           00011  BCF STATUS,RP0
+0101   0186           00012  CLRF PORTB
+0102   3000           00013  MOVLW B'00000000'
+0103   1683           00014  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00015  MOVWF TRISB
+0105   1283           00016  BCF STATUS,RP0
+                      00017 
+0106   3001           00018  MOVLW 01h
+0107   0086           00019  MOVWF PORTB
+0108                  00020 ONE
+0108   3008           00021  MOVLW 08h
+0109   008E           00022  MOVWF REG
+                      00023  
+010A                  00024 TWO
+010A   2114           00025  CALL PAUSE
+010B   1403           00026  BSF STATUS,0
+010C   0B8E           00027  DECFSZ REG,1
+010D   1003           00028  BCF STATUS,0
+Message[305]: Using default destination of 1 (file).
+010E   0D86           00029  RLF PORTB
+010F   3001           00030  MOVLW 01h
+0110   0606           00031  XORWF PORTB,0
+0111   1903           00032  BTFSC STATUS,Z
+0112   2908           00033  GOTO ONE
+                      00034  
+0113   290A           00035  GOTO TWO
+                      00036 
+0114                  00037 PAUSE ; Частота мигания 1Гц
+0114   30FF           00038  MOVLW D'255'
+0115   008D           00039  MOVWF DIGIT
+0116                  00040 THREE
+0116   30FF           00041  MOVLW D'255'
+0117   008C           00042  MOVWF SCRATCH
+0118                  00043 FOUR
+0118   0B8C           00044  DECFSZ SCRATCH,1
+0119   2918           00045  GOTO FOUR
+MPASM 02.80 Released            TEST3.ASM   9-27-2010  23:06:58         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+011A   0B8D           00046  DECFSZ DIGIT,1
+011B   2916           00047  GOTO THREE
+011C   0008           00048  RETURN
+                      00049 
+                      00050  END
+MPASM 02.80 Released            TEST3.ASM   9-27-2010  23:06:58         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+DIGIT                             0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FOUR                              00000118
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+ONE                               00000108
+OPTION_REG                        00000081
+PAUSE                             00000114
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+REG                               0000000E
+RP0                               00000005
+RP1                               00000006
+SCRATCH                           0000000C
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+THREE                             00000116
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+TWO                               0000010A
+W                                 00000000
+WR                                00000001
+MPASM 02.80 Released            TEST3.ASM   9-27-2010  23:06:58         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXX--- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    30
+Program Memory Words Free:   994
+
+
+Errors   :     0
+Warnings :     3 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+

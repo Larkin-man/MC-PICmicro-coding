@@ -1,0 +1,138 @@
+MPASM 02.80 Released              AP2.ASM   10-29-2010  19:00:06         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+  0000000C            00007 SCRATCH EQU 0Ch
+  0000000D            00008 DIGIT EQU 0Dh
+  0000000E            00009 CODER EQU 0Eh
+                      00010 
+0100   1283           00011  BCF STATUS,RP0
+0101   0186           00012  CLRF PORTB
+0102   3000           00013  MOVLW B'00000000'
+0103   1683           00014  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00015  MOVWF TRISB
+0105   1283           00016  BCF STATUS,RP0
+                      00017 
+0106   3000           00018  MOVLW B'00000000'
+                      00019  ;MOVWF EEDATA      ;ЭТО ЧИСТО ОЧИСТИТЬ еедата НУЖНО;
+                      00020 
+0107   30B5           00021  MOVLW B'10110101' ; ЭТО МОЖНО СПЕРВА ПОМЕНЯТЬ
+0108   008E           00022  MOVWF CODER
+                      00023 
+0109   0808           00024  MOVF EEDATA,0
+010A   060E           00025  XORWF CODER,0     ;Если eedata и coder 
+010B   1903           00026  BTFSC STATUS,Z    ;cовпадают то выполняется
+010C   30E7           00027  MOVLW B'11100111' ;<-эта команда
+                      00028 
+010D   0086           00029  MOVWF PORTB
+                      00030 
+010E   30B5           00031  MOVLW B'10110101'
+010F   0088           00032  MOVWF EEDATA
+                      00033  
+0110   2910           00034  GOTO $
+                      00035 
+                      00036  END
+MPASM 02.80 Released              AP2.ASM   10-29-2010  19:00:06         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+CODER                             0000000E
+DC                                00000001
+DIGIT                             0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+SCRATCH                           0000000C
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+MPASM 02.80 Released              AP2.ASM   10-29-2010  19:00:06         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX X--------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    18
+Program Memory Words Free:  1006
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

@@ -1,0 +1,177 @@
+MPASM 02.80 Released              malt.ASM   11-26-2003  17:38:24         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+  0000000C            00002 NUMBER1 EQU B'00001100'  ;12
+  00000003            00003 NUMBER2 EQU B'00000011'  ;3
+  0000000C            00004 ADDONREG EQU 0Ch
+  0000000D            00005 ADDONREG2 EQU 0Dh
+                      00006 ;INITA EQU D'0'
+  00000000            00007 INITB EQU D'0'
+                      00008 
+Warning[205]: Found directive in column 1. (ORG)
+0000                  00009 ORG 0
+Warning[203]: Found opcode in column 1. (GOTO)
+0000   2900           00010 GOTO BEGIN
+Warning[205]: Found directive in column 1. (ORG)
+0100                  00011 ORG 100h
+                      00012 
+0100                  00013 BEGIN
+                      00014 
+Warning[203]: Found opcode in column 1. (BCF)
+0100   1283           00015 BCF STATUS,RP0
+Warning[203]: Found opcode in column 1. (CLRF)
+0101   0186           00016 CLRF PORTB
+Warning[203]: Found opcode in column 1. (MOVLW)
+0102   3000           00017 MOVLW INITB
+Warning[203]: Found opcode in column 1. (BSF)
+0103   1683           00018 BSF STATUS, RP0
+Warning[203]: Found opcode in column 1. (MOVWF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00019 MOVWF TRISB
+                      00020 
+Warning[203]: Found opcode in column 1. (BCF)
+0105   1283           00021 BCF STATUS, RP0
+                      00022 
+Warning[203]: Found opcode in column 1. (MOVLW)
+0106   300C           00023 MOVLW NUMBER1
+Warning[203]: Found opcode in column 1. (MOVWF)
+0107   008C           00024 MOVWF ADDONREG
+                      00025 
+                      00026 ;MOVLW B'00000000'
+Warning[203]: Found opcode in column 1. (CLRW)
+0108   0103           00027 CLRW
+Warning[203]: Found opcode in column 1. (CLRF)
+0109   018D           00028 CLRF ADDONREG2
+                      00029 
+Warning[203]: Found opcode in column 1. (ADDLW)
+010A   3E03           00030 ADDLW NUMBER2
+010B                  00031 START
+                      00032 ;ADDLW NUMBER1
+Warning[203]: Found opcode in column 1. (INCF)
+Message[305]: Using default destination of 1 (file).
+010B   0A8D           00033 INCF ADDONREG2
+MPASM 02.80 Released              malt.ASM   11-26-2003  17:38:24         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (SUBWF)
+010C   028C           00034 SUBWF ADDONREG,1
+Warning[203]: Found opcode in column 1. (INCF)
+010D   0A8C           00035 INCF ADDONREG,1
+Warning[203]: Found opcode in column 1. (DECFSZ)
+010E   0B8C           00036 DECFSZ ADDONREG,1
+Warning[203]: Found opcode in column 1. (GOTO)
+010F   290B           00037 GOTO START
+                      00038 
+                      00039 ;ADDLW B'00000001'
+Warning[203]: Found opcode in column 1. (MOVF)
+0110   080D           00040 MOVF ADDONREG2,0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0malt   0086           00041 MOVWF PORTB
+                      00042 
+Warning[205]: Found directive in column 1. (END)
+                      00043 END
+MPASM 02.80 Released              malt.ASM   11-26-2003  17:38:24         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADDONREG                          0000000C
+ADDONREG2                         0000000D
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INITB                             00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+NUMBER1                           0000000C
+NUMBER2                           00000003
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+START                             0000010B
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+MPASM 02.80 Released              malt.ASM   11-26-2003  17:38:24         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    19
+Program Memory Words Free:  1005
+
+
+Errors   :     0
+Warnings :    22 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+

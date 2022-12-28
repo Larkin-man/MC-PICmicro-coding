@@ -1,0 +1,382 @@
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+  0000000C            00007 SCRATCH EQU 0Ch
+  0000000D            00008 DIGIT EQU 0Dh
+                      00009 
+0100   1283           00010  BCF STATUS,RP0
+0101   0186           00011  CLRF PORTB
+0102   3000           00012  MOVLW B'00000000'
+0103   1683           00013  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00014  MOVWF TRISB
+0105   1283           00015  BCF STATUS,RP0
+                      00016 
+0106   0086           00017  MOVWF PORTB
+0107   0A86           00018  INCF PORTB,1
+0108   21D1           00019  CALL PAUSE
+0109   0A86           00020  INCF PORTB,1
+                      00021  ;CALL PAUSE
+010A   0A86           00022  INCF PORTB,1
+                      00023  ;CALL PAUSE
+010B   3030           00024  MOVLW 030
+010C   008C           00025  MOVWF SCRATCH
+010D   0A86           00026  INCF PORTB,1
+                      00027  ;CALL PAUSE
+010E   0A86           00028  INCF PORTB,1
+                      00029  ;CALL PAUSE
+010F   0A86           00030  INCF PORTB,1
+0110   21D1           00031  CALL PAUSE
+0111   0A86           00032  INCF PORTB,1
+0112   21D1           00033  CALL PAUSE
+0113   0A86           00034  INCF PORTB,1
+0114   21D1           00035  CALL PAUSE
+0115   0A86           00036  INCF PORTB,1
+0116   21D1           00037  CALL PAUSE
+0117   0A86           00038  INCF PORTB,1
+0118   21D1           00039  CALL PAUSE
+0119   0A86           00040  INCF PORTB,1
+011A   21D1           00041  CALL PAUSE
+011B   0A86           00042  INCF PORTB,1
+011C   21D1           00043  CALL PAUSE
+011D   0A86           00044  INCF PORTB,1
+011E   21D1           00045  CALL PAUSE
+011F   0A86           00046  INCF PORTB,1
+0120   21D1           00047  CALL PAUSE
+0121   0A86           00048  INCF PORTB,1
+0122   21D1           00049  CALL PAUSE
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0123   0A86           00050  INCF PORTB,1
+0124   21D1           00051  CALL PAUSE
+0125   0A86           00052  INCF PORTB,1
+0126   21D1           00053  CALL PAUSE
+0127   0A86           00054  INCF PORTB,1
+0128   21D1           00055  CALL PAUSE
+0129   0A86           00056  INCF PORTB,1
+012A   21D1           00057  CALL PAUSE
+012B   0A86           00058  INCF PORTB,1
+012C   21D1           00059  CALL PAUSE
+012D   0A86           00060  INCF PORTB,1
+012E   21D1           00061  CALL PAUSE
+012F   0A86           00062  INCF PORTB,1
+0130   21D1           00063  CALL PAUSE
+0131   0A86           00064  INCF PORTB,1
+0132   21D1           00065  CALL PAUSE
+0133   0A86           00066  INCF PORTB,1
+0134   21D1           00067  CALL PAUSE
+0135   0A86           00068  INCF PORTB,1
+0136   21D1           00069  CALL PAUSE
+0137   0A86           00070  INCF PORTB,1
+0138   21D1           00071  CALL PAUSE
+0139   0A86           00072  INCF PORTB,1
+013A   21D1           00073  CALL PAUSE
+013B   0A86           00074  INCF PORTB,1
+013C   21D1           00075  CALL PAUSE
+013D   0A86           00076  INCF PORTB,1
+013E   21D1           00077  CALL PAUSE
+013F   0A86           00078  INCF PORTB,1
+0140   21D1           00079  CALL PAUSE
+0141   0A86           00080  INCF PORTB,1
+0142   21D1           00081  CALL PAUSE
+0143   0A86           00082  INCF PORTB,1
+0144   21D1           00083  CALL PAUSE
+0145   0A86           00084  INCF PORTB,1
+0146   21D1           00085  CALL PAUSE
+0147   0A86           00086  INCF PORTB,1
+0148   21D1           00087  CALL PAUSE
+0149   0A86           00088  INCF PORTB,1
+014A   21D1           00089  CALL PAUSE
+014B   0A86           00090  INCF PORTB,1
+014C   21D1           00091  CALL PAUSE
+014D   0A86           00092  INCF PORTB,1
+014E   21D1           00093  CALL PAUSE
+014F   0A86           00094  INCF PORTB,1
+0150   21D1           00095  CALL PAUSE
+0151   0A86           00096  INCF PORTB,1
+0152   21D1           00097  CALL PAUSE
+0153   0A86           00098  INCF PORTB,1
+0154   21D1           00099  CALL PAUSE
+0155   0A86           00100  INCF PORTB,1
+0156   21D1           00101  CALL PAUSE
+0157   0A86           00102  INCF PORTB,1
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0158   21D1           00103  CALL PAUSE
+0159   0A86           00104  INCF PORTB,1
+015A   21D1           00105  CALL PAUSE
+015B   0A86           00106  INCF PORTB,1
+015C   21D1           00107  CALL PAUSE
+015D   0A86           00108  INCF PORTB,1
+015E   21D1           00109  CALL PAUSE
+015F   0A86           00110  INCF PORTB,1
+0160   21D1           00111  CALL PAUSE
+0161   0A86           00112  INCF PORTB,1
+0162   21D1           00113  CALL PAUSE
+0163   0A86           00114  INCF PORTB,1
+0164   21D1           00115  CALL PAUSE
+0165   0A86           00116  INCF PORTB,1
+0166   21D1           00117  CALL PAUSE
+0167   0A86           00118  INCF PORTB,1
+0168   21D1           00119  CALL PAUSE
+0169   0A86           00120  INCF PORTB,1
+016A   21D1           00121  CALL PAUSE
+016B   0A86           00122  INCF PORTB,1
+016C   21D1           00123  CALL PAUSE
+016D   0A86           00124  INCF PORTB,1
+016E   21D1           00125  CALL PAUSE
+016F   0A86           00126  INCF PORTB,1
+0170   21D1           00127  CALL PAUSE
+0171   0A86           00128  INCF PORTB,1
+0172   21D1           00129  CALL PAUSE
+0173   0A86           00130  INCF PORTB,1
+0174   21D1           00131  CALL PAUSE
+0175   0A86           00132  INCF PORTB,1
+0176   21D1           00133  CALL PAUSE
+0177   0A86           00134  INCF PORTB,1
+0178   21D1           00135  CALL PAUSE
+0179   0A86           00136  INCF PORTB,1
+017A   21D1           00137  CALL PAUSE
+017B   0A86           00138  INCF PORTB,1
+017C   21D1           00139  CALL PAUSE
+017D   0A86           00140  INCF PORTB,1
+017E   21D1           00141  CALL PAUSE
+017F   0A86           00142  INCF PORTB,1
+0180   21D1           00143  CALL PAUSE
+0181   0A86           00144  INCF PORTB,1
+0182   21D1           00145  CALL PAUSE
+0183   0A86           00146  INCF PORTB,1
+0184   21D1           00147  CALL PAUSE
+0185   0A86           00148  INCF PORTB,1
+0186   21D1           00149  CALL PAUSE
+0187   0A86           00150  INCF PORTB,1
+0188   21D1           00151  CALL PAUSE
+0189   0A86           00152  INCF PORTB,1
+018A   21D1           00153  CALL PAUSE
+018B   0A86           00154  INCF PORTB,1
+018C   21D1           00155  CALL PAUSE
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+018D   0A86           00156  INCF PORTB,1
+018E   21D1           00157  CALL PAUSE
+018F   0A86           00158  INCF PORTB,1
+0190   21D1           00159  CALL PAUSE
+0191   0A86           00160  INCF PORTB,1
+0192   21D1           00161  CALL PAUSE
+0193   0A86           00162  INCF PORTB,1
+0194   21D1           00163  CALL PAUSE
+0195   0A86           00164  INCF PORTB,1
+0196   21D1           00165  CALL PAUSE
+0197   0A86           00166  INCF PORTB,1
+0198   21D1           00167  CALL PAUSE
+0199   0A86           00168  INCF PORTB,1
+019A   21D1           00169  CALL PAUSE
+019B   0A86           00170  INCF PORTB,1
+019C   21D1           00171  CALL PAUSE
+019D   0A86           00172  INCF PORTB,1
+019E   21D1           00173  CALL PAUSE
+019F   0A86           00174  INCF PORTB,1
+01A0   21D1           00175  CALL PAUSE
+01A1   0A86           00176  INCF PORTB,1
+01A2   21D1           00177  CALL PAUSE
+01A3   0A86           00178  INCF PORTB,1
+01A4   21D1           00179  CALL PAUSE
+01A5   0A86           00180  INCF PORTB,1
+01A6   21D1           00181  CALL PAUSE
+01A7   0A86           00182  INCF PORTB,1
+01A8   21D1           00183  CALL PAUSE
+01A9   0A86           00184  INCF PORTB,1
+01AA   21D1           00185  CALL PAUSE
+01AB   0A86           00186  INCF PORTB,1
+01AC   21D1           00187  CALL PAUSE
+01AD   0A86           00188  INCF PORTB,1
+01AE   21D1           00189  CALL PAUSE
+01AF   0A86           00190  INCF PORTB,1
+01B0   21D1           00191  CALL PAUSE
+01B1   0A86           00192  INCF PORTB,1
+01B2   21D1           00193  CALL PAUSE
+01B3   0A86           00194  INCF PORTB,1
+01B4   21D1           00195  CALL PAUSE
+01B5   0A86           00196  INCF PORTB,1
+01B6   21D1           00197  CALL PAUSE
+01B7   0A86           00198  INCF PORTB,1
+01B8   21D1           00199  CALL PAUSE
+01B9   0A86           00200  INCF PORTB,1
+01BA   21D1           00201  CALL PAUSE
+01BB   0A86           00202  INCF PORTB,1
+01BC   21D1           00203  CALL PAUSE
+01BD   0A86           00204  INCF PORTB,1
+01BE   21D1           00205  CALL PAUSE
+01BF   0A86           00206  INCF PORTB,1
+01C0   21D1           00207  CALL PAUSE
+01C1   0A86           00208  INCF PORTB,1
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01C2   21D1           00209  CALL PAUSE
+01C3   0A86           00210  INCF PORTB,1
+01C4   21D1           00211  CALL PAUSE
+01C5   0A86           00212  INCF PORTB,1
+01C6   21D1           00213  CALL PAUSE
+01C7   0A86           00214  INCF PORTB,1
+01C8   21D1           00215  CALL PAUSE
+01C9   0A86           00216  INCF PORTB,1
+01CA   21D1           00217  CALL PAUSE
+01CB   0A86           00218  INCF PORTB,1
+01CC   21D1           00219  CALL PAUSE
+01CD   0A86           00220  INCF PORTB,1
+01CE   21D1           00221  CALL PAUSE
+01CF   0A86           00222  INCF PORTB,1
+01D0   21D1           00223  CALL PAUSE
+                      00224 
+01D1                  00225 PAUSE ; Частота мигания 1Гц
+01D1   30FF           00226  MOVLW D'255'
+01D2   008D           00227  MOVWF DIGIT
+01D3                  00228 THREE
+01D3   30FF           00229  MOVLW D'255'
+01D4   008C           00230  MOVWF SCRATCH
+01D5                  00231 FOUR
+01D5   0B8C           00232  DECFSZ SCRATCH,1
+01D6   29D5           00233  GOTO FOUR
+01D7   0B8D           00234  DECFSZ DIGIT,1
+01D8   29D3           00235  GOTO THREE
+01D9   0008           00236  RETURN
+                      00237 
+01DA                  00238 ZZZ ; ~0,04896125 sec
+01DA   30FF           00239  MOVLW D'255'
+01DB   008C           00240  MOVWF SCRATCH
+01DC   008D           00241  MOVWF DIGIT
+01DD                  00242 TWO
+01DD   0B8C           00243  DECFSZ SCRATCH,1
+01DE   29DD           00244  GOTO TWO
+01DF   0B8D           00245  DECFSZ DIGIT,1
+01E0   29DD           00246  GOTO TWO
+01E1   0008           00247  RETURN
+                      00248 
+                      00249  END
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+DIGIT                             0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FOUR                              000001D5
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PAUSE                             000001D1
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+SCRATCH                           0000000C
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+THREE                             000001D3
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+TWO                               000001DD
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+MPASM 02.80 Released              AP1.ASM   10-29-2010  19:28:17         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Z                                 00000002
+ZZZ                               000001DA
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XX-------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   227
+Program Memory Words Free:   797
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

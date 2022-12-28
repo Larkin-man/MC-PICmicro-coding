@@ -1,0 +1,170 @@
+MPASM 02.80 Released            TEST2.ASM   9-27-2010  23:01:44         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+0100   1283           00007  BCF STATUS,RP0
+0101   0186           00008  CLRF PORTB
+0102   3000           00009  MOVLW B'00000000'
+0103   1683           00010  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00011  MOVWF TRISB
+0105   1283           00012  BCF STATUS,RP0
+                      00013 
+0106   3003           00014  MOVLW D'3'
+                      00015  
+0107   0086           00016  MOVWF PORTB
+0108   0786           00017  ADDWF PORTB,1
+0109   0806           00018  MOVF PORTB,0
+                      00019  
+010A   0086           00020  MOVWF PORTB
+010B   0786           00021  ADDWF PORTB,1
+010C   0806           00022  MOVF PORTB,0 
+                      00023 
+010D   0086           00024  MOVWF PORTB
+010E   0786           00025  ADDWF PORTB,1
+010F   0806           00026  MOVF PORTB,0
+                      00027 
+0110   0086           00028  MOVWF PORTB
+0111   0786           00029  ADDWF PORTB,1
+0112   0806           00030  MOVF PORTB,0
+                      00031 
+0113   0086           00032  MOVWF PORTB
+0114   0786           00033  ADDWF PORTB,1
+0115   0806           00034  MOVF PORTB,0
+                      00035 
+0116   0086           00036  MOVWF PORTB
+0117   0786           00037  ADDWF PORTB,1
+0118   0806           00038  MOVF PORTB,0
+                      00039 
+0119   0086           00040  MOVWF PORTB
+011A   0786           00041  ADDWF PORTB,1
+011B   0806           00042  MOVF PORTB,0
+                      00043 
+011C   0086           00044  MOVWF PORTB
+011D   0786           00045  ADDWF PORTB,1
+011E   0806           00046  MOVF PORTB,0
+                      00047 
+011F   0086           00048  MOVWF PORTB
+0120   0786           00049  ADDWF PORTB,1
+MPASM 02.80 Released            TEST2.ASM   9-27-2010  23:01:44         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0121   0806           00050  MOVF PORTB,0
+                      00051 
+0122   0086           00052  MOVWF PORTB
+0123   0786           00053  ADDWF PORTB,1
+0124   0806           00054  MOVF PORTB,0
+                      00055 
+0125   0086           00056  MOVWF PORTB
+0126   0786           00057  ADDWF PORTB,1
+0127   0806           00058  MOVF PORTB,0
+                      00059 
+0128   0086           00060  MOVWF PORTB
+0129   0786           00061  ADDWF PORTB,1
+012A   0806           00062  MOVF PORTB,0
+Warning[203]: Found opcode in column 1. (GOTO)
+012B   292B           00063 GOTO $
+                      00064  END
+MPASM 02.80 Released            TEST2.ASM   9-27-2010  23:01:44         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+MPASM 02.80 Released            TEST2.ASM   9-27-2010  23:01:44         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXX---- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    45
+Program Memory Words Free:   979
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

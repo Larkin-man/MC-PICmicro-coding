@@ -1,0 +1,176 @@
+MPASM 02.80 Released                twoVar.ASM   11-25-2003  17:33:46         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+2007   3FF1           00002  __CONFIG  _XT_OSC & _CP_OFF & _PWRTE_ON & _WDT_OFF 
+                      00003 ; ячейки ОЗУ
+  0000000C            00004 SCRATCH         EQU     0Ch
+  0000000D            00005 DIGIT           EQU     0Dh
+  00000000            00006 INITA           EQU     B'00000000'
+  00000000            00007 INITB           EQU     B'00000000'
+0000                  00008         ORG     0
+0000   2900           00009         GOTO    BEGIN
+                      00010 ;
+0100                  00011         ORG     100h
+0100                  00012 BEGIN
+                      00013 ;Инициализация порта А
+0100   1283           00014         BCF     STATUS,RP0    ;Выбор банка 0
+0101   0185           00015         CLRF    PORTA         ;Очистить регистр CNTRLPORT
+0102   3000           00016         MOVLW   INITA         ;Загpузить B'00000000' в pегистp W
+0103   1683           00017         BSF     STATUS,RP0    ;Выбор банка 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0085           00018         MOVWF   TRISA         ;Все разряды порта А установить как выходы
+                      00019 ;Инициализация порта В
+0105   1283           00020         BCF     STATUS,RP0    ;Выбор банка 0
+0106   0186           00021         CLRF    PORTB         ;Очистить регистр DATAPORT
+0107   3000           00022         MOVLW   INITB         ;Загpузить B'00000000' в pегистp W
+0108   1683           00023         BSF     STATUS,RP0    ;Выбор банка 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0109   0086           00024         MOVWF   TRISB         ;Все разряды порта В установить как выходы 
+                      00025 ;
+010A                  00026 NACH
+010A   1283           00027         BCF     STATUS,RP0  
+010B   300E           00028         MOVLW D'14'
+010C   0086           00029         MOVWF PORTB
+                      00030      ;   CALL PAUSE
+                      00031        ; CALL PAUSE
+010D   3000           00032         MOVLW    D'0'         ;Загрузить 0FFh в регистр W
+010E   008C           00033         MOVWF    SCRATCH      ;Загрузить регистр W в SCRATCH
+010F   300E           00034         MOVLW    D'14'         ;Загрузить 0FFh в регистр W         
+0110   008D           00035         MOVWF    DIGIT      ;Загрузить регистр W в SCRATCH
+0111   3002           00036         MOVLW    D'2'
+0112                  00037 LP
+0112   0A8C           00038         INCF SCRATCH,1
+0113   030D           00039         DECF DIGIT,0
+0114   0B0D           00040         DECFSZ DIGIT,0      
+0115   2912           00041         GOTO     LP  
+0116   0086           00042         MOVWF PORTB    
+                      00043 ;        CALL PAUSE
+                      00044  ;       CALL PAUSE
+0117   290A           00045         GOTO NACH
+0118                  00046 PAUSE
+0118   30FF           00047        MOVLW    0FFh         ;Загрузить 0FFh в регистр W
+0119   008C           00048        MOVWF    SCRATCH      ;Загрузить регистр W в SCRATCH
+MPASM 02.80 Released                twoVar.ASM   11-25-2003  17:33:46         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+011A   30F1           00049        MOVLW    0F1h         ;Загрузить 0FFh в регистр W
+011B   008D           00050        MOVWF    DIGIT        ;Загрузить регистр W в DIGIT
+011C                  00051 LOOP
+011C   0B8C           00052        DECFSZ   SCRATCH,1    ;Уменьшить SCRATCH на 1
+011D   291C           00053        GOTO     LOOP         ;и переходить обратно, пока не станет =0
+011E                  00054 OPO
+011E   0B8D           00055         DECFSZ   DIGIT,1      ;Уменьшить DIGIT на 1
+011F   291C           00056         GOTO     LOOP         ;и переходить на метку LOOP, пока не станет =0
+0120   0008           00057        RETURN                ;Вернуться из подпрограммы
+                      00058 
+Warning[205]: Found directive in column 1. (end)
+                      00059 end
+MPASM 02.80 Released                twoVar.ASM   11-25-2003  17:33:46         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+DIGIT                             0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INITA                             00000000
+INITB                             00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP                              0000011C
+LP                                00000112
+NACH                              0000010A
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPO                               0000011E
+OPTION_REG                        00000081
+PAUSE                             00000118
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+SCRATCH                           0000000C
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+MPASM 02.80 Released                twoVar.ASM   11-25-2003  17:33:46         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX X--------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    34
+Program Memory Words Free:   990
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+
