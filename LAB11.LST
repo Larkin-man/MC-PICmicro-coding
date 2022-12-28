@@ -1,0 +1,216 @@
+MPASM 02.80 Released              LAB11.ASM   10-30-2010  1:09:19         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+0000                  00002  ORG 0
+0000   2900           00003  GOTO BEGIN
+0100                  00004  ORG 100h
+0100                  00005 BEGIN
+                      00006 
+  0000000C            00007 D1 EQU 0Ch
+  0000000D            00008 D2 EQU 0Dh
+  0000000E            00009 D3 EQU 0Eh
+                      00010 
+0100   1283           00011  BCF STATUS,RP0
+0101   0186           00012  CLRF PORTB
+0102   3000           00013  MOVLW B'00000000'
+0103   1683           00014  BSF STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00015  MOVWF TRISB
+0105   1283           00016  BCF STATUS,RP0
+                      00017 
+0106                  00018 MAIN
+0106   3003           00019  MOVLW B'00000011'
+0107   0086           00020  MOVWF PORTB
+0108   2142           00021  CALL PAUSE
+0109   2142           00022  CALL PAUSE
+010A   2142           00023  CALL PAUSE
+010B   301B           00024  MOVLW B'00011011'
+010C   0086           00025  MOVWF PORTB
+010D   2142           00026  CALL PAUSE
+010E   2142           00027  CALL PAUSE
+010F   30C0           00028  MOVLW B'11000000'
+0110   0086           00029  MOVWF PORTB
+0111   2142           00030  CALL PAUSE
+0112   2142           00031  CALL PAUSE
+0113   2142           00032  CALL PAUSE
+0114   0186           00033  CLRF PORTB
+0115   2142           00034  CALL PAUSE
+0116   30C0           00035  MOVLW B'11000000'
+0117   0086           00036  MOVWF PORTB
+0118   2142           00037  CALL PAUSE
+0119   0186           00038  CLRF PORTB
+011A   2142           00039  CALL PAUSE
+011B   30C0           00040  MOVLW B'11000000'
+011C   0086           00041  MOVWF PORTB
+011D   2142           00042  CALL PAUSE
+011E   0186           00043  CLRF PORTB
+011F   2142           00044  CALL PAUSE
+0120   30C0           00045  MOVLW B'11000000'
+0121   0086           00046  MOVWF PORTB
+0122   2142           00047  CALL PAUSE
+0123   0186           00048  CLRF PORTB
+0124   2142           00049  CALL PAUSE
+MPASM 02.80 Released              LAB11.ASM   10-30-2010  1:09:19         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0125   30C0           00050  MOVLW B'11000000'
+0126   0086           00051  MOVWF PORTB
+0127   2142           00052  CALL PAUSE
+0128   0186           00053  CLRF PORTB
+0129   2142           00054  CALL PAUSE
+012A   30C0           00055  MOVLW B'11000000'
+012B   0086           00056  MOVWF PORTB
+012C   2142           00057  CALL PAUSE
+012D   3018           00058  MOVLW B'00011000'
+012E   0086           00059  MOVWF PORTB
+012F   2142           00060  CALL PAUSE
+0130   2142           00061  CALL PAUSE
+0131   2906           00062  GOTO MAIN
+                      00063 
+0132                  00064 A10
+0132   30CC           00065  MOVLW D'204'
+0133   008E           00066  MOVWF D3
+0134   213E           00067  CALL PULS
+0135   0008           00068  RETURN
+                      00069 
+0136                  00070 B4
+0136   3052           00071  MOVLW D'82'
+0137   008E           00072  MOVWF D3
+0138   213E           00073  CALL PULS
+0139   0008           00074  RETURN
+                      00075 
+013A                  00076 C1
+013A   3014           00077  MOVLW D'20'
+013B   008E           00078  MOVWF D3
+013C   213E           00079  CALL PULS
+013D   0008           00080  RETURN
+                      00081 
+013E                  00082 PULS
+013E   2142           00083  CALL PAUSE
+013F   0B8E           00084  DECFSZ D3,1
+0140   293E           00085  GOTO PULS
+0141   0008           00086  RETURN
+                      00087 
+0142                  00088 PAUSE ; ~0,04896125 sec
+0142   0064           00089  CLRWDT
+0143   30FF           00090  MOVLW D'255'
+0144   008C           00091  MOVWF D1
+0145   008D           00092  MOVWF D2
+0146                  00093 TWO
+0146   0B8C           00094  DECFSZ D1,1
+0147   2946           00095  GOTO TWO
+0148   0B8D           00096  DECFSZ D2,1
+0149   2946           00097  GOTO TWO
+014A   0008           00098  RETURN
+                      00099 
+                      00100  END
+MPASM 02.80 Released              LAB11.ASM   10-30-2010  1:09:19         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A10                               00000132
+B4                                00000136
+BEGIN                             00000100
+C                                 00000000
+C1                                0000013A
+D1                                0000000C
+D2                                0000000D
+D3                                0000000E
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+MAIN                              00000106
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PAUSE                             00000142
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PULS                              0000013E
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+TWO                               00000146
+MPASM 02.80 Released              LAB11.ASM   10-30-2010  1:09:19         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXX----- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    76
+Program Memory Words Free:   948
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

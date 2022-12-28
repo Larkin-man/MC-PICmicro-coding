@@ -1,0 +1,137 @@
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+                      00002 
+  00000000            00003 INITB   EQU B'00000000'
+  0000000C            00004 VARA    EQU 0Ch
+  0000000D            00005 VARB    EQU 0Dh
+                      00006 
+Warning[205]: Found directive in column 1. (ORG)
+0000                  00007 ORG 0
+Warning[203]: Found opcode in column 1. (GOTO)
+0000   2900           00008 GOTO BEGIN
+Warning[205]: Found directive in column 1. (ORG)
+0100                  00009 ORG 100h
+                      00010 
+0100                  00011 BEGIN
+0100   1283           00012         BCF     STATUS, RP0
+0101   0186           00013         CLRF    PORTB
+0102   3000           00014         MOVLW   INITB
+0103   1683           00015         BSF     STATUS, RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   0086           00016         MOVWF   TRISB
+                      00017 
+0105   1283           00018         BCF     STATUS, RP0
+                      00019 
+0106   3003           00020         MOVLW   D'3'
+0107   008C           00021         MOVWF   VARA
+                      00022 
+0108   0103           00023         CLRW
+0109                  00024 LOOP
+0109   3E04           00025         ADDLW   D'4'
+010A   0B8C           00026         DECFSZ  VARA, 1
+010B   2909           00027         GOTO    LOOP
+                      00028 
+010C   0086           00029         MOVWF   PORTB
+Warning[205]: Found directive in column 1. (END)
+                      00030 END
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             00000100
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INITB                             00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP                              00000109
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+VARA                              0000000C
+VARB                              0000000D
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXX--- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    14
+Program Memory Words Free:  1010
+
+
+Errors   :     0
+Warnings :     4 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

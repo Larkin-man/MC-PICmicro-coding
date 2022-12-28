@@ -1,0 +1,492 @@
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
+Warning[205]: Found directive in column 1. (list)
+                      00002 list p=16f84
+                      00003 
+  0000000C            00004 REGn1 EQU 0Ch
+  0000000D            00005 REGn2 EQU 0Dh
+  0000002D            00006 REGn3 EQU 2Dh
+  0000000E            00007 RG1 EQU 0Eh
+  0000000F            00008 RG2 EQU 0Fh
+  0000002F            00009 RG3 EQU 2Fh
+  0000001F            00010 DELAY EQU 1Fh
+  0000001E            00011 DELAY2 EQU 1Eh
+                      00012 
+                      00013 ;//////////////////////
+                      00014 ; œÓÚ ¿ Ì‡ ‚˚‚Ó‰
+Warning[203]: Found opcode in column 1. (MOVLW)
+0000   301F           00015 MOVLW B'11111'
+Warning[203]: Found opcode in column 1. (TRIS)
+Warning[224]: Use of this instruction is not recommended.
+0001   0065           00016 TRIS PORTA
+Warning[203]: Found opcode in column 1. (OPTION)
+Warning[224]: Use of this instruction is not recommended.
+0002   0062           00017 OPTION
+                      00018 ; ¬˚‚Ó‰ Ì‡ ¿
+                      00019 ;MOVLW B'10'
+                      00020 ;MOVWF PORTA
+                      00021 ;//////////////////////
+                      00022 ; œÓÚ ¬ Ì‡ ‚˚‚Ó‰
+Warning[203]: Found opcode in column 1. (MOVLW)
+0003   3000           00023 MOVLW 0
+Warning[203]: Found opcode in column 1. (TRIS)
+Warning[224]: Use of this instruction is not recommended.
+0004   0066           00024 TRIS PORTB
+Warning[203]: Found opcode in column 1. (OPTION)
+Warning[224]: Use of this instruction is not recommended.
+0005   0062           00025 OPTION
+                      00026 ; ¬˚‚Ó‰ Ì‡ B
+Warning[203]: Found opcode in column 1. (MOVLW)
+0006   3000           00027 MOVLW 0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0007   0086           00028 MOVWF PORTB
+                      00029 
+                      00030 ;«¿œ»—‹ ¬ –≈√»
+Warning[203]: Found opcode in column 1. (MOVLW)
+0008   301E           00031 MOVLW B'11110'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0009   008C           00032 MOVWF REGn1
+Warning[203]: Found opcode in column 1. (MOVLW)
+000A   301D           00033 MOVLW B'11101'
+Warning[203]: Found opcode in column 1. (MOVWF)
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000B   008D           00034 MOVWF REGn2
+Warning[203]: Found opcode in column 1. (MOVLW)
+000C   301B           00035 MOVLW B'11011'
+Warning[203]: Found opcode in column 1. (MOVWF)
+000D   00AD           00036 MOVWF REGn3
+                      00037 
+                      00038 
+000E                  00039 BEGIN
+                      00040 
+                      00041 ;//////////////////////
+                      00042 
+                      00043 ;Œ¡Õ”À≈Õ»≈ –≈√»—“–Œ¬
+Warning[203]: Found opcode in column 1. (MOVLW)
+000E   3000           00044 MOVLW 0
+Warning[203]: Found opcode in column 1. (MOVWF)
+000F   008E           00045 MOVWF RG1
+Warning[203]: Found opcode in column 1. (MOVLW)
+0010   3000           00046 MOVLW 0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0011   008F           00047 MOVWF RG2
+Warning[203]: Found opcode in column 1. (MOVLW)
+0012   3000           00048 MOVLW 0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0013   00AF           00049 MOVWF RG3
+                      00050 
+                      00051 
+                      00052 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00053 
+Warning[203]: Found opcode in column 1. (MOVLW)
+0014   301E           00054 MOVLW B'11110'
+Warning[203]: Found opcode in column 1. (SUBWF)
+0015   0205           00055 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+0016   1903           00056 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+0017   2027           00057 CALL PROG1
+                      00058 
+Warning[203]: Found opcode in column 1. (MOVLW)
+0018   301D           00059 MOVLW B'11101'
+Warning[203]: Found opcode in column 1. (SUBWF)
+0019   0205           00060 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+001A   1903           00061 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+001B   2033           00062 CALL PROG2
+                      00063 
+Warning[203]: Found opcode in column 1. (MOVLW)
+001C   301B           00064 MOVLW B'11011'
+Warning[203]: Found opcode in column 1. (SUBWF)
+001D   0205           00065 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+001E   1903           00066 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001F   203F           00067 CALL PROG3
+                      00068 ; »Õ¿◊≈
+                      00069 
+0020                  00070 KGTY
+Warning[203]: Found opcode in column 1. (MOVLW)
+0020   30FF           00071 MOVLW B'11111111'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0021   0086           00072 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0022   206B           00073 CALL PROGZAD
+Warning[203]: Found opcode in column 1. (MOVLW)
+0023   3000           00074 MOVLW B'00000000'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0024   0086           00075 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0025   206B           00076 CALL PROGZAD
+                      00077 
+                      00078 
+                      00079 ;GOTO KGTY
+Warning[203]: Found opcode in column 1. (GOTO)
+0026   280E           00080 GOTO BEGIN
+                      00081 
+                      00082 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00083 ; œŒƒœ–Œ√–¿ÃÃ¿ π 1
+0027                  00084 PROG1
+                      00085 ;MOVLW 0
+                      00086 ;MOVLW B'1'
+                      00087 
+Warning[203]: Found opcode in column 1. (MOVLW)
+0027   30AA           00088 MOVLW B'10101010'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0028   008E           00089 MOVWF RG1
+                      00090 
+                      00091 
+                      00092 
+0029                  00093 METCA
+Warning[203]: Found opcode in column 1. (MOVWF)
+0029   0086           00094 MOVWF PORTB
+                      00095 ;+++++++++++++++
+                      00096 ;MOVLW 1
+                      00097 
+Warning[203]: Found opcode in column 1. (COMF)
+002A   098E           00098 COMF RG1,1
+                      00099 
+                      00100 ;MOVWF 1Ch
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+002B   080C           00101 MOVFW REGn1
+Warning[203]: Found opcode in column 1. (SUBWF)
+002C   0205           00102 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+002D   1D03           00103 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+002E   280E           00104 GOTO BEGIN
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00105 ;MOVFW 1Ch
+                      00106 
+Warning[203]: Found opcode in column 1. (CALL)
+002F   206B           00107 CALL PROGZAD
+                      00108 
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0030   080E           00109 MOVFW RG1
+Warning[203]: Found opcode in column 1. (GOTO)
+0031   2829           00110 GOTO METCA
+                      00111 
+Warning[203]: Found opcode in column 1. (RETURN)
+0032   0008           00112 RETURN
+                      00113 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00114 ; œŒƒœ–Œ√–¿ÃÃ¿ π 2
+0033                  00115 PROG2
+                      00116 ;MOVLW B'1'
+0033                  00117 METCA2
+Warning[203]: Found opcode in column 1. (MOVWF)
+0033   0086           00118 MOVWF PORTB
+                      00119 
+Warning[203]: Found opcode in column 1. (CALL)
+0034   206B           00120 CALL PROGZAD
+                      00121 
+Warning[203]: Found opcode in column 1. (RRF)
+0035   0C8F           00122 RRF RG2,1
+                      00123 
+                      00124 ;MOVWF 1Ch
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0036   080D           00125 MOVFW REGn2
+Warning[203]: Found opcode in column 1. (SUBWF)
+0037   0205           00126 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0038   1D03           00127 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0039   280E           00128 GOTO BEGIN
+                      00129 ;MOVFW 1Ch
+                      00130 
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+003A   080F           00131 MOVFW RG2
+                      00132 
+Warning[203]: Found opcode in column 1. (BTFSC)
+003B   1903           00133 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (BSF)
+003C   178F           00134 BSF RG2,7
+                      00135 
+Warning[203]: Found opcode in column 1. (GOTO)
+003D   2833           00136 GOTO METCA2
+Warning[203]: Found opcode in column 1. (RETURN)
+003E   0008           00137 RETURN
+                      00138 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00139 ; œŒƒœ–Œ√–¿ÃÃ¿ π 3
+003F                  00140 PROG3
+003F                  00141 METCA3
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00142 
+Warning[203]: Found opcode in column 1. (MOVLW)
+003F   3018           00143 MOVLW B'00011000'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0040   0086           00144 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0041   206B           00145 CALL PROGZAD
+                      00146 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0042   082D           00147 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+0043   0205           00148 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0044   1D03           00149 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0045   280E           00150 GOTO BEGIN
+                      00151 ;$$$$$$$$
+Warning[203]: Found opcode in column 1. (MOVLW)
+0046   3024           00152 MOVLW B'00100100'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0047   0086           00153 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0048   206B           00154 CALL PROGZAD
+                      00155 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0049   082D           00156 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+004A   0205           00157 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+004B   1D03           00158 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+004C   280E           00159 GOTO BEGIN
+                      00160 ;$$$$$$$$
+Warning[203]: Found opcode in column 1. (MOVLW)
+004D   3042           00161 MOVLW B'01000010'
+Warning[203]: Found opcode in column 1. (MOVWF)
+004E   0086           00162 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+004F   206B           00163 CALL PROGZAD
+                      00164 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0050   082D           00165 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+0051   0205           00166 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0052   1D03           00167 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0053   280E           00168 GOTO BEGIN
+                      00169 ;$$$$$$$$
+Warning[203]: Found opcode in column 1. (MOVLW)
+0054   3081           00170 MOVLW B'10000001'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0055   0086           00171 MOVWF PORTB
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (CALL)
+0056   206B           00172 CALL PROGZAD
+                      00173 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0057   082D           00174 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+0058   0205           00175 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0059   1D03           00176 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+005A   280E           00177 GOTO BEGIN
+                      00178 ;$$$$$$$$
+Warning[203]: Found opcode in column 1. (MOVLW)
+005B   3042           00179 MOVLW B'01000010'
+Warning[203]: Found opcode in column 1. (MOVWF)
+005C   0086           00180 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+005D   206B           00181 CALL PROGZAD
+                      00182 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+005E   082D           00183 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+005F   0205           00184 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0060   1D03           00185 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0061   280E           00186 GOTO BEGIN
+                      00187 ;$$$$$$$$
+Warning[203]: Found opcode in column 1. (MOVLW)
+0062   3024           00188 MOVLW B'00100100'
+Warning[203]: Found opcode in column 1. (MOVWF)
+0063   0086           00189 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0064   206B           00190 CALL PROGZAD
+                      00191 ;$$$$$$$$
+Warning[204]: Found pseudo-op in column 1. (MOVFW)
+0065   082D           00192 MOVFW REGn3
+Warning[203]: Found opcode in column 1. (SUBWF)
+0066   0205           00193 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSS)
+0067   1D03           00194 BTFSS STATUS,Z
+Warning[203]: Found opcode in column 1. (GOTO)
+0068   280E           00195 GOTO BEGIN
+                      00196 ;$$$$$$$$
+                      00197 
+Warning[203]: Found opcode in column 1. (GOTO)
+0069   283F           00198 GOTO METCA3
+Warning[203]: Found opcode in column 1. (RETURN)
+006A   0008           00199 RETURN
+                      00200 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00201 ; œŒƒœ–Œ√–¿ÃÃ¿ «¿ƒ≈–∆ »
+006B                  00202 PROGZAD
+                      00203 
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (MOVLW)
+006B   30FF           00204 MOVLW B'11111111'
+Warning[203]: Found opcode in column 1. (MOVWF)
+006C   009F           00205 MOVWF DELAY
+Warning[203]: Found opcode in column 1. (MOVWF)
+006D   009E           00206 MOVWF DELAY2
+006E                  00207 MET2
+006E                  00208 MET
+Warning[203]: Found opcode in column 1. (NOP)
+006E   0000           00209 NOP
+Warning[203]: Found opcode in column 1. (DECFSZ)
+006F   0B9F           00210 DECFSZ DELAY,1
+Warning[203]: Found opcode in column 1. (GOTO)
+0070   286E           00211 GOTO MET
+Warning[203]: Found opcode in column 1. (DECFSZ)
+0071   0B9E           00212 DECFSZ DELAY2,1
+Warning[203]: Found opcode in column 1. (GOTO)
+0072   286E           00213 GOTO MET2
+Warning[203]: Found opcode in column 1. (RETURN)
+0073   0008           00214 RETURN
+                      00215 ;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                      00216 
+                      00217 
+Warning[205]: Found directive in column 1. (END)
+                      00218 END
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BEGIN                             0000000E
+C                                 00000000
+DC                                00000001
+DELAY                             0000001F
+DELAY2                            0000001E
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+KGTY                              00000020
+MET                               0000006E
+MET2                              0000006E
+METCA                             00000029
+METCA2                            00000033
+METCA3                            0000003F
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PROG1                             00000027
+PROG2                             00000033
+PROG3                             0000003F
+PROGZAD                           0000006B
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+REGn1                             0000000C
+REGn2                             0000000D
+REGn3                             0000002D
+RG1                               0000000E
+RG2                               0000000F
+RG3                               0000002F
+RP0                               00000005
+RP1                               00000006
+MPASM 02.80 Released               LAB7.ASM   12-4-2003  14:54:43         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXX------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   116
+Program Memory Words Free:   908
+
+
+Errors   :     0
+Warnings :   122 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
