@@ -1,4 +1,4 @@
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  1
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (RETPOINT)
                       00042 
 0118   1985           00043  BTFSC PORTA,3
 0119   2132           00044  CALL SROT
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  2
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[207]: Found label after column 1. (SROT)
                       00089 
 Warning[207]: Found label after column 1. (AVA)
 0139                  00090  AVA
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  3
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -160,7 +160,7 @@ Warning[207]: Found label after column 1. (ERR)
 0152   290C           00122  GOTO LOOP
                       00123 
                       00124  END
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  4
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  4
 
 
 SYMBOL TABLE
@@ -219,7 +219,7 @@ T0IE                              00000005
 T0IF                              00000002
 T0SE                              00000004
 TMR0                              00000001
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  5
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  5
 
 
 SYMBOL TABLE

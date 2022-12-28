@@ -1,4 +1,4 @@
-MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  1
+MPASM 02.80 Released            LAB5.ASM   11-22-2003  10:25:13         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -8,54 +8,64 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00001         LIST
                       00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
                       00136         LIST
+                      00002 
+                      00003 ; ÿ÷åéêè ÎÇÓ
+  0000000C            00004 RESULT          EQU     0Ch
+  0000000D            00005 DELITEL         EQU     0Dh
+  0000000E            00006 CHASTNOE        EQU     0Eh
+0000                  00007         ORG     0
+0000   2900           00008         GOTO    BEGIN
+                      00009 ;
+0100                  00010         ORG     100h
+0100                  00011 BEGIN
 Warning[205]: Found directive in column 1. (list)
-                      00002 list p=16f84
-                      00003 ;
+                      00012 list p=16f84
+                      00013 ;
 Warning[203]: Found opcode in column 1. (MOVLW)
-0000   3000           00004 MOVLW 0
+0100   3000           00014 MOVLW 0
 Warning[203]: Found opcode in column 1. (TRIS)
 Warning[224]: Use of this instruction is not recommended.
-0001   0066           00005 TRIS PORTB
+0101   0066           00015 TRIS PORTB
 Warning[203]: Found opcode in column 1. (OPTION)
 Warning[224]: Use of this instruction is not recommended.
-0002   0062           00006 OPTION
+0102   0062           00016 OPTION
+                      00017 
+                      00018 ;CLRF STATUS
 Warning[203]: Found opcode in column 1. (MOVLW)
-0003   300A           00007 MOVLW D'10'
+0103   300A           00019 MOVLW D'10'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0004   008D           00008 MOVWF 0x0D 
+0104   008C           00020 MOVWF RESULT 
 Warning[203]: Found opcode in column 1. (MOVLW)
-0005   3000           00009 MOVLW D'0'
-Warning[203]: Found opcode in column 1. (MOVWF)
-0006   008E           00010 MOVWF 0x0E 
-Warning[203]: Found opcode in column 1. (MOVLW)
-0007   3005           00011 MOVLW D'5'
-0008                  00012 N
+0105   3005           00021 MOVLW D'5'
+Warning[203]: Found opcode in column 1. (CLRF)
+0106   018E           00022 CLRF CHASTNOE
+0107                  00023 N
 Warning[203]: Found opcode in column 1. (SUBWF)
-0008   020D           00013 SUBWF 0x0D,0
-Warning[203]: Found opcode in column 1. (MOVWF)
-0009   008C           00014 MOVWF 0x0C 
+0107   028C           00024 SUBWF RESULT,1
+                      00025 ;MOVWF RESULT 
 Warning[203]: Found opcode in column 1. (INCF)
-000A   0A8E           00015 INCF 0x0E,1
-Warning[203]: Found opcode in column 1. (MOVLW)
-000B   300C           00016 MOVLW 0x0C
-Warning[203]: Found opcode in column 1. (BTFSC)
-000C   1903           00017 BTFSC STATUS,Z
+0108   0A8E           00026 INCF CHASTNOE,1
+Warning[203]: Found opcode in column 1. (BTFSS)
+0109   1D03           00027 BTFSS STATUS,Z
 Warning[203]: Found opcode in column 1. (GOTO)
-000D   2808           00018 GOTO N
+010A   2907           00028 GOTO N
 Warning[203]: Found opcode in column 1. (MOVLW)
-000E   300E           00019 MOVLW 0x0E
+010B   300E           00029 MOVLW CHASTNOE
 Warning[203]: Found opcode in column 1. (MOVWF)
-000F   0086           00020 MOVWF PORTB
+010C   0086           00030 MOVWF PORTB
 Warning[205]: Found directive in column 1. (END)
-                      00021 END
-MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  2
+                      00031 END
+MPASM 02.80 Released            LAB5.ASM   11-22-2003  10:25:13         PAGE  2
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+BEGIN                             00000100
 C                                 00000000
+CHASTNOE                          0000000E
 DC                                00000001
+DELITEL                           0000000D
 EEADR                             00000009
 EECON1                            00000088
 EECON2                            00000089
@@ -71,7 +81,7 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-N                                 00000008
+N                                 00000107
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
@@ -87,6 +97,7 @@ PSA                               00000003
 RBIE                              00000003
 RBIF                              00000000
 RD                                00000000
+RESULT                            0000000C
 RP0                               00000005
 RP1                               00000006
 STATUS                            00000003
@@ -103,16 +114,16 @@ WREN                              00000002
 WRERR                             00000003
 Z                                 00000002
 _CP_OFF                           00003FFF
-_CP_ON                            0000000F
-_HS_OSC                           00003FFE
-_LP_OSC                           00003FFC
-_PWRTE_OFF                        00003FFF
-MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  3
+MPASM 02.80 Released            LAB5.ASM   11-22-2003  10:25:13         PAGE  3
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
 _RC_OSC                           00003FFF
 _WDT_OFF                          00003FFB
@@ -123,16 +134,17 @@ __16F84                           00000001
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : XXXXXXXXXXXXXXXX ---------------- ---------------- ----------------
+0000 : X--------------- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXX--- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    16
-Program Memory Words Free:  1008
+Program Memory Words Used:    14
+Program Memory Words Free:  1010
 
 
 Errors   :     0
-Warnings :    20 reported,     0 suppressed
+Warnings :    17 reported,     0 suppressed
 Messages :     0 reported,     0 suppressed
 
 

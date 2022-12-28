@@ -1,5 +1,5 @@
 [PROJECT]
-Target=LAB10.HEX
+Target=3D.HEX
 Development_Mode=2
 Processor=0x684a
 ToolSuite=Microchip
@@ -32,16 +32,16 @@ Library=
 LinkerScript=
 
 [Target Data]
-FileList=LAB10.ASM;
+FileList=3D.ASM;
 BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
-BuildRequired=1
+BuildRequired=0
 
 [LAB10.ASM]
 Type=4
 Path=
-FileList=PIC16F84.INC;
+FileList=P16F84.INC;
 BuildTool=
 OptionString=
 AdditionalOptionString=
@@ -84,12 +84,27 @@ TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
 
-[Windows]
-0=0000 c:\progra~1\mplab\3qwer.asm 73 42 719 375 9 0
+[P16F84.INC]
+Type=5
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[3D.ASM]
+Type=4
+Path=
+FileList=P16F84.INC;
+BuildTool=
+OptionString=
+AdditionalOptionString=
 
 [mru-list]
-1=c:\progra~1\mplab\3qwer.asm
-2=c:\progra~1\mplab\LAB10.asm
-3=c:\progra~1\mplab\3–¿¡Œ“¿.asm
-4=c:\progra~1\mplab\31.asm
-5=c:\progra~1\mplab\3.asm
+1=c:\progra~1\mplab\3d.asm
+
+[Windows]
+2=0000 c:\progra~1\mplab\3d.asm 0 1 290 340 9 0
+1=0020 360 161 756 477 9 0
+0=0040 303 12 791 300 9 4 16
+

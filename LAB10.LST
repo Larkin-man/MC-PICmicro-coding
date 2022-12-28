@@ -1,12 +1,14 @@
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  1
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
                       00001 ;Программа №3 по ТС А и У
-Error[105]  : Cannot open file (Include File "PIC16F84.inc" not found)
-                      00002 #include<PIC16F84.inc>
+                      00002 #include<p16f84.inc>
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00136         LIST
 Warning[205]: Found directive in column 1. (list)
                       00003 list p=16f84
                       00004 
@@ -17,9 +19,7 @@ Warning[203]: Found opcode in column 1. (MOVLW)
 0000   301F           00008 MOVLW B'11111'
 Warning[203]: Found opcode in column 1. (TRIS)
 Warning[224]: Use of this instruction is not recommended.
-Error[113]  : Symbol not previously defined (PORTA)
-Error[126]  : Argument out of range (0000 not between 0005 and 0007)
-0001   0060           00009 TRIS PORTA
+0001   0065           00009 TRIS PORTA
 Warning[203]: Found opcode in column 1. (OPTION)
 Warning[224]: Use of this instruction is not recommended.
 0002   0062           00010 OPTION
@@ -27,9 +27,7 @@ Warning[203]: Found opcode in column 1. (MOVLW)
 0003   3000           00011 MOVLW 0
 Warning[203]: Found opcode in column 1. (TRIS)
 Warning[224]: Use of this instruction is not recommended.
-Error[113]  : Symbol not previously defined (PORTB)
-Error[126]  : Argument out of range (0000 not between 0005 and 0007)
-0004   0060           00012 TRIS PORTB
+0004   0066           00012 TRIS PORTB
 Warning[203]: Found opcode in column 1. (OPTION)
 Warning[224]: Use of this instruction is not recommended.
 0005   0062           00013 OPTION
@@ -45,32 +43,26 @@ Warning[203]: Found opcode in column 1. (CLRF)
 Warning[203]: Found opcode in column 1. (MOVLW)
 0008   301E           00021 MOVLW B'11110'
 Warning[203]: Found opcode in column 1. (SUBWF)
-Error[113]  : Symbol not previously defined (PORTA)
-0009   0200           00022 SUBWF PORTA,0
+0009   0205           00022 SUBWF PORTA,0
 Warning[203]: Found opcode in column 1. (BTFSC)
-Error[113]  : Symbol not previously defined (STATUS)
-Error[113]  : Symbol not previously defined (Z)
-000A   1800           00023 BTFSC STATUS,Z
+000A   1903           00023 BTFSC STATUS,Z
 Warning[203]: Found opcode in column 1. (CALL)
 000B   2011           00024 CALL PODPR1
                       00025 
 Warning[203]: Found opcode in column 1. (MOVLW)
 000C   301D           00026 MOVLW B'11101'
 Warning[203]: Found opcode in column 1. (SUBWF)
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  2
+000D   0205           00027 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+000E   1903           00028 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (CALL)
+000F   2025           00029 CALL PODPR2
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-Error[113]  : Symbol not previously defined (PORTA)
-000D   0200           00027 SUBWF PORTA,0
-Warning[203]: Found opcode in column 1. (BTFSC)
-Error[113]  : Symbol not previously defined (STATUS)
-Error[113]  : Symbol not previously defined (Z)
-000E   1800           00028 BTFSC STATUS,Z
-Warning[203]: Found opcode in column 1. (CALL)
-000F   2011           00029 CALL PODPR1
 Warning[203]: Found opcode in column 1. (GOTO)
 0010   2806           00030 GOTO BEGIN
                       00031 
@@ -79,54 +71,39 @@ Warning[203]: Found opcode in column 1. (GOTO)
 Warning[203]: Found opcode in column 1. (MOVLW)
 0011   3000           00034 MOVLW D'0'
 Warning[203]: Found opcode in column 1. (MOVWF)
-Error[113]  : Symbol not previously defined (PORTB)
-0012   0080           00035 MOVWF PORTB 
+0012   0086           00035 MOVWF PORTB 
 Warning[203]: Found opcode in column 1. (MOVLW)
 0013   3081           00036 MOVLW D'129'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-0014   2000           00037 CALL VSPPODPR1
+0014   203B           00037 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 0015   30C3           00038 MOVLW D'195'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-0016   2000           00039 CALL VSPPODPR1
+0016   203B           00039 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 0017   30E7           00040 MOVLW D'231'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-0018   2000           00041 CALL VSPPODPR1
+0018   203B           00041 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 0019   30FF           00042 MOVLW D'255'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-001A   2000           00043 CALL VSPPODPR1
+001A   203B           00043 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 001B   30E7           00044 MOVLW D'231'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-001C   2000           00045 CALL VSPPODPR1
+001C   203B           00045 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 001D   30C3           00046 MOVLW D'195'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-001E   2000           00047 CALL VSPPODPR1
+001E   203B           00047 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 001F   3081           00048 MOVLW D'129'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-0020   2000           00049 CALL VSPPODPR1
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  3
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
+0020   203B           00049 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVLW)
 0021   3000           00050 MOVLW D'0'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR1)
-0022   2000           00051 CALL VSPPODPR1
+0022   203B           00051 CALL VSPPODPR1
 Warning[203]: Found opcode in column 1. (GOTO)
 0023   2811           00052 GOTO N
 Warning[203]: Found opcode in column 1. (RETURN)
@@ -137,28 +114,29 @@ Warning[203]: Found opcode in column 1. (RETURN)
 Warning[203]: Found opcode in column 1. (MOVLW)
 0025   3000           00057 MOVLW D'0'
 Warning[203]: Found opcode in column 1. (MOVWF)
-Error[113]  : Symbol not previously defined (PORTB)
-0026   0080           00058 MOVWF PORTB 
+0026   0086           00058 MOVWF PORTB 
 Warning[203]: Found opcode in column 1. (MOVLW)
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
 0027   3081           00059 MOVLW D'129'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR2)
-0028   2000           00060 CALL VSPPODPR2
+0028   2042           00060 CALL VSPPODPR2
 Warning[203]: Found opcode in column 1. (MOVLW)
 0029   3042           00061 MOVLW D'66'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR2)
-002A   2000           00062 CALL VSPPODPR2
+002A   2042           00062 CALL VSPPODPR2
 Warning[203]: Found opcode in column 1. (MOVLW)
 002B   3024           00063 MOVLW D'36'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR2)
-002C   2000           00064 CALL VSPPODPR2
+002C   2042           00064 CALL VSPPODPR2
 Warning[203]: Found opcode in column 1. (MOVLW)
 002D   3018           00065 MOVLW D'24'
 Warning[203]: Found opcode in column 1. (CALL)
-Error[113]  : Symbol not previously defined (VSPPODPR2)
-002E   2000           00066 CALL VSPPODPR2
+002E   2042           00066 CALL VSPPODPR2
 Warning[203]: Found opcode in column 1. (GOTO)
 002F   2825           00067 GOTO M
 Warning[203]: Found opcode in column 1. (RETURN)
@@ -172,19 +150,13 @@ Warning[203]: Found opcode in column 1. (MOVWF)
 Warning[203]: Found opcode in column 1. (MOVWF)
 0033   008D           00073 MOVWF PROMRESULT1
 0034                  00074 P
-0034                  00075 W
+0034                  00075 WP
 Warning[203]: Found opcode in column 1. (NOP)
 0034   0000           00076 NOP
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  4
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
 Warning[203]: Found opcode in column 1. (DECFSZ)
 0035   0B8C           00077 DECFSZ PROMRESULT,1
 Warning[203]: Found opcode in column 1. (GOTO)
-0036   2834           00078 GOTO W
+0036   2834           00078 GOTO WP
 Warning[203]: Found opcode in column 1. (NOP)
 0037   0000           00079 NOP
 Warning[203]: Found opcode in column 1. (DECFSZ)
@@ -194,72 +166,130 @@ Warning[203]: Found opcode in column 1. (GOTO)
 Warning[203]: Found opcode in column 1. (RETURN)
 003A   0008           00082 RETURN
                       00083 
-003B                  00084 VSPODPR1
+003B                  00084 VSPPODPR1
 Warning[203]: Found opcode in column 1. (MOVWF)
-Error[113]  : Symbol not previously defined (PORTB)
-003B   0080           00085 MOVWF PORTB
+003B   0086           00085 MOVWF PORTB
 Warning[203]: Found opcode in column 1. (CALL)
 003C   2031           00086 CALL ZADER
 Warning[203]: Found opcode in column 1. (MOVLW)
-003D   301D           00087 MOVLW B'11101'
+003D   301E           00087 MOVLW B'11110'
 Warning[203]: Found opcode in column 1. (SUBWF)
-Error[113]  : Symbol not previously defined (PORTA)
-003E   0200           00088 SUBWF PORTA,0
-Warning[203]: Found opcode in column 1. (BTFSS)
-Error[113]  : Symbol not previously defined (STATUS)
-Error[113]  : Symbol not previously defined (Z)
-003F   1C00           00089 BTFSS STATUS,Z
-Warning[203]: Found opcode in column 1. (RETURN)
-0040   0008           00090 RETURN
-Warning[203]: Found opcode in column 1. (GOTO)
-0041   2806           00091 GOTO BEGIN
-                      00092 
-0042                  00093 VSPODPR2
-Warning[203]: Found opcode in column 1. (MOVWF)
-Error[113]  : Symbol not previously defined (PORTB)
-0042   0080           00094 MOVWF PORTB
-Warning[203]: Found opcode in column 1. (CALL)
-0043   2031           00095 CALL ZADER
-Warning[203]: Found opcode in column 1. (MOVLW)
-0044   301E           00096 MOVLW B'11110'
-Warning[203]: Found opcode in column 1. (SUBWF)
-Error[113]  : Symbol not previously defined (PORTA)
-0045   0200           00097 SUBWF PORTA,0
-Warning[203]: Found opcode in column 1. (BTFSS)
-Error[113]  : Symbol not previously defined (STATUS)
-Error[113]  : Symbol not previously defined (Z)
-0046   1C00           00098 BTFSS STATUS,Z
-Warning[203]: Found opcode in column 1. (RETURN)
-0047   0008           00099 RETURN
-Warning[203]: Found opcode in column 1. (GOTO)
-0048   2806           00100 GOTO BEGIN
-                      00101 
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  5
+003E   0205           00088 SUBWF PORTA,0
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+Warning[203]: Found opcode in column 1. (BTFSC)
+003F   1903           00089 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (RETURN)
+0040   0008           00090 RETURN
+                      00091 
+Warning[203]: Found opcode in column 1. (GOTO)
+0041   2806           00092 GOTO BEGIN
+                      00093 
+0042                  00094 VSPPODPR2
+Warning[203]: Found opcode in column 1. (MOVWF)
+0042   0086           00095 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0043   2031           00096 CALL ZADER
+Warning[203]: Found opcode in column 1. (MOVLW)
+0044   301D           00097 MOVLW B'11101'
+Warning[203]: Found opcode in column 1. (SUBWF)
+0045   0205           00098 SUBWF PORTA,0
+Warning[203]: Found opcode in column 1. (BTFSC)
+0046   1903           00099 BTFSC STATUS,Z
+Warning[203]: Found opcode in column 1. (RETURN)
+0047   0008           00100 RETURN
+                      00101 
+                      00102 
+Warning[203]: Found opcode in column 1. (GOTO)
+0048   2806           00103 GOTO BEGIN
+                      00104 
 Warning[205]: Found directive in column 1. (END)
-                      00102 END
-MPASM 02.80 Released             LAB10.ASM   12-18-2003  14:05:58         PAGE  6
+                      00105 END
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
 BEGIN                             00000006
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
 M                                 00000025
 N                                 00000011
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
 P                                 00000034
+PCL                               00000002
+PCLATH                            0000000A
 PODPR1                            00000011
 PODPR2                            00000025
+PORTA                             00000005
+PORTB                             00000006
 PROMRESULT                        0000000C
 PROMRESULT1                       0000000D
-VSPODPR1                          0000003B
-VSPODPR2                          00000042
-W                                 00000034
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+VSPPODPR1                         0000003B
+VSPPODPR2                         00000042
+W                                 00000000
+MPASM 02.80 Released            LAB10.ASM   12-18-2003  14:29:27         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WP                                00000034
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
 ZADER                             00000031
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
 __16F84                           00000001
 
 
@@ -274,7 +304,7 @@ Program Memory Words Used:    73
 Program Memory Words Free:   951
 
 
-Errors   :    33
+Errors   :     0
 Warnings :    79 reported,     0 suppressed
 Messages :     0 reported,     0 suppressed
 
