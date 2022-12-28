@@ -1,4 +1,4 @@
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  1
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:38:12         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -49,118 +49,122 @@ Warning[207]: Found label after column 1. (LOOP)
                       00035 
 0114   1A05           00036  BTFSC PORTA,4
 0115   2939           00037  GOTO AVA
-Warning[207]: Found label after column 1. (RETPOINT)
-0116                  00038  RETPOINT
+Warning[207]: Found label after column 1. (RETP)
+0116                  00038  RETP
                       00039 
 0116   1805           00040  BTFSC PORTA,0
-0117   212B           00041  CALL FROT
-                      00042 
-0118   1985           00043  BTFSC PORTA,3
-0119   2132           00044  CALL SROT
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  2
+0117   292B           00041  GOTO FROT
+Warning[207]: Found label after column 1. (L1)
+0118                  00042  L1
+                      00043 
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:38:12         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00045 
-011A   290C           00046  GOTO LOOP
+0118   1985           00044  BTFSC PORTA,3
+0119   2932           00045  GOTO SROT
+Warning[207]: Found label after column 1. (L2)
+011A                  00046  L2
                       00047 
+011A   290C           00048  GOTO LOOP
+                      00049 
 Warning[207]: Found label after column 1. (FAR)
-011B                  00048  FAR
-011B   1486           00049  BSF PORTB,1
-011C   1506           00050  BSF PORTB,2
-011D   1686           00051  BSF PORTB,5
-011E   1706           00052  BSF PORTB,6
-011F   0008           00053  RETURN
-                      00054 
+011B                  00050  FAR
+011B   1486           00051  BSF PORTB,1
+011C   1506           00052  BSF PORTB,2
+011D   1686           00053  BSF PORTB,5
+011E   1706           00054  BSF PORTB,6
+011F   0008           00055  RETURN
+                      00056 
 Warning[207]: Found label after column 1. (UNFAR)
-0120                  00055  UNFAR
-0120   1086           00056  BCF PORTB,1
-0121   1106           00057  BCF PORTB,2
-0122   1286           00058  BCF PORTB,5
-0123   1306           00059  BCF PORTB,6
-0124   0008           00060  RETURN
-                      00061 
+0120                  00057  UNFAR
+0120   1086           00058  BCF PORTB,1
+0121   1106           00059  BCF PORTB,2
+0122   1286           00060  BCF PORTB,5
+0123   1306           00061  BCF PORTB,6
+0124   0008           00062  RETURN
+                      00063 
 Warning[207]: Found label after column 1. (GAB)
-0125                  00062  GAB
-0125   1586           00063  BSF PORTB,3
-0126   1606           00064  BSF PORTB,4
-0127   0008           00065  RETURN
-                      00066 
+0125                  00064  GAB
+0125   1586           00065  BSF PORTB,3
+0126   1606           00066  BSF PORTB,4
+0127   0008           00067  RETURN
+                      00068 
 Warning[207]: Found label after column 1. (UNGAB)
-0128                  00067  UNGAB
-0128   1186           00068  BCF PORTB,3
-0129   1206           00069  BCF PORTB,4
-012A   0008           00070  RETURN
-                      00071 
+0128                  00069  UNGAB
+0128   1186           00070  BCF PORTB,3
+0129   1206           00071  BCF PORTB,4
+012A   0008           00072  RETURN
+                      00073 
 Warning[207]: Found label after column 1. (FROT)
-012B                  00072  FROT
-012B   1985           00073  BTFSC PORTA,3
-012C   294D           00074  GOTO ERR
-012D   1406           00075  BSF PORTB,0
-012E   2144           00076  CALL ZZZ
-012F   1006           00077  BCF PORTB,0
-0130   2144           00078  CALL ZZZ
-0131   0008           00079  RETURN
-                      00080 
+012B                  00074  FROT
+012B   1985           00075  BTFSC PORTA,3
+012C   294D           00076  GOTO ERR
+012D   1406           00077  BSF PORTB,0
+012E   2144           00078  CALL ZZZ
+012F   1006           00079  BCF PORTB,0
+0130   2144           00080  CALL ZZZ
+0131   2918           00081  GOTO L1
+                      00082 
 Warning[207]: Found label after column 1. (SROT)
-0132                  00081  SROT
-0132   1805           00082  BTFSC PORTA,0
-0133   294D           00083  GOTO ERR
-0134   1786           00084  BSF PORTB,7
-0135   2144           00085  CALL ZZZ
-0136   1386           00086  BCF PORTB,7
-0137   2144           00087  CALL ZZZ
-0138   0008           00088  RETURN
-                      00089 
-Warning[207]: Found label after column 1. (AVA)
-0139                  00090  AVA
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  3
+0132                  00083  SROT
+0132   1805           00084  BTFSC PORTA,0
+0133   294D           00085  GOTO ERR
+0134   1786           00086  BSF PORTB,7
+0135   2144           00087  CALL ZZZ
+0136   1386           00088  BCF PORTB,7
+0137   2144           00089  CALL ZZZ
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:38:12         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0139   1805           00091  BTFSC PORTA,0
-013A   294D           00092  GOTO ERR
-013B   1985           00093  BTFSC PORTA,3
-013C   294D           00094  GOTO ERR
-013D   1406           00095  BSF PORTB,0
-013E   1786           00096  BSF PORTB,7
-013F   2144           00097  CALL ZZZ
-0140   1006           00098  BCF PORTB,0
-0141   1386           00099  BCF PORTB,7
-0142   2144           00100  CALL ZZZ
-0143   2916           00101  GOTO RETPOINT
-                      00102 
+0138   291A           00090  GOTO L2
+                      00091 
+Warning[207]: Found label after column 1. (AVA)
+0139                  00092  AVA
+0139   1805           00093  BTFSC PORTA,0
+013A   294D           00094  GOTO ERR
+013B   1985           00095  BTFSC PORTA,3
+013C   294D           00096  GOTO ERR
+013D   1406           00097  BSF PORTB,0
+013E   1786           00098  BSF PORTB,7
+013F   2144           00099  CALL ZZZ
+0140   1006           00100  BCF PORTB,0
+0141   1386           00101  BCF PORTB,7
+0142   2144           00102  CALL ZZZ
+0143   2916           00103  GOTO RETP
+                      00104 
 Warning[207]: Found label after column 1. (ZZZ)
-0144                  00103  ZZZ
-0144   30FF           00104  MOVLW D'255'
-0145   008D           00105  MOVWF D2
+0144                  00105  ZZZ
+0144   30FF           00106  MOVLW D'255'
+0145   008D           00107  MOVWF D2
 Warning[207]: Found label after column 1. (LOOP1)
-0146                  00106  LOOP1
-0146   30FF           00107  MOVLW D'255'
-0147   008C           00108  MOVWF D1
+0146                  00108  LOOP1
+0146   30FF           00109  MOVLW D'255'
+0147   008C           00110  MOVWF D1
 Warning[207]: Found label after column 1. (LOOP2)
-0148                  00109  LOOP2
-0148   0B8C           00110  DECFSZ D1,1
-0149   2948           00111  GOTO LOOP2
-014A   0B8D           00112  DECFSZ D2,1
-014B   2946           00113  GOTO LOOP1
-014C   0008           00114  RETURN
-                      00115 
+0148                  00111  LOOP2
+0148   0B8C           00112  DECFSZ D1,1
+0149   2948           00113  GOTO LOOP2
+014A   0B8D           00114  DECFSZ D2,1
+014B   2946           00115  GOTO LOOP1
+014C   0008           00116  RETURN
+                      00117 
 Warning[207]: Found label after column 1. (ERR)
-014D                  00116  ERR
-014D   30FF           00117  MOVLW B'11111111'
-014E   0086           00118  MOVWF PORTB
-014F   2144           00119  CALL ZZZ
-0150   0186           00120  CLRF PORTB
-0151   2144           00121  CALL ZZZ
-0152   290C           00122  GOTO LOOP
-                      00123 
-                      00124  END
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  4
+014D                  00118  ERR
+014D   30FF           00119  MOVLW B'11111111'
+014E   0086           00120  MOVWF PORTB
+014F   2144           00121  CALL ZZZ
+0150   0186           00122  CLRF PORTB
+0151   2144           00123  CALL ZZZ
+0152   290C           00124  GOTO LOOP
+                      00125 
+                      00126  END
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:38:12         PAGE  4
 
 
 SYMBOL TABLE
@@ -191,6 +195,8 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
+L1                                00000118
+L2                                0000011A
 LOOP                              0000010C
 LOOP1                             00000146
 LOOP2                             00000148
@@ -209,7 +215,7 @@ PSA                               00000003
 RBIE                              00000003
 RBIF                              00000000
 RD                                00000000
-RETPOINT                          00000116
+RETP                              00000116
 RP0                               00000005
 RP1                               00000006
 SROT                              00000132
@@ -217,14 +223,14 @@ STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-T0SE                              00000004
-TMR0                              00000001
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:08:36         PAGE  5
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:38:12         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T0SE                              00000004
+TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
 UNFAR                             00000120
@@ -261,7 +267,7 @@ Program Memory Words Free:   940
 
 
 Errors   :     0
-Warnings :    15 reported,     0 suppressed
+Warnings :    17 reported,     0 suppressed
 Messages :     2 reported,     0 suppressed
 
 
