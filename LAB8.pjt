@@ -34,6 +34,13 @@ BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
 BuildRequired=0
+[LAB8.ASM]
+Type=4
+Path=
+FileList=P16F84.INC;
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [Trace-Config]
 GetAddress=1
 AddressWidth=5.000000
@@ -63,13 +70,6 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
-[LAB8.ASM]
-Type=4
-Path=
-FileList=P16F84.INC;
-BuildTool=
-OptionString=
-AdditionalOptionString=
 [P16F84.INC]
 Type=5
 Path=
@@ -77,13 +77,13 @@ FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
-[mru-list]
-1=c:\progra~1\mplab\test\LAB8.asm
-2=c:\progra~1\mplab\alex\lab8.asm
-3=c:\progra~1\mplab\alex\lab1.asm
-4=j:\asm\kav\lab1.asm
-5=j:\asm\kav\lab2.asm
 [Windows]
-2=0004 98 442 968 630 9 0
-1=0000 c:\progra~1\mplab\test\LAB8.asm 19 19 403 457 9 0
-0=0020 576 35 976 387 9 0
+2=0000 c:\progra~1\mplab\test\l8b.asm 12 13 425 451 9 0
+1=0004 63 432 933 624 9 0
+0=0020 542 23 942 375 9 0
+[mru-list]
+1=c:\progra~1\mplab\kav\lab8.asm
+2=c:\progra~1\mplab\test\l8b.asm
+3=c:\progra~1\mplab\alex\lab8.asm
+4=c:\progra~1\mplab\test\LAB8.asm
+5=c:\progra~1\mplab\alex\lab1.asm
