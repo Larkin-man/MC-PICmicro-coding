@@ -1,8 +1,9 @@
 [PROJECT]
-Target=LAB8.HEX
+Target=LAB10.HEX
 Development_Mode=2
 Processor=0x684a
 ToolSuite=Microchip
+
 [Fuses]
 Frequency=4000000.000000
 ClockSource=1
@@ -24,30 +25,35 @@ DisableIoPins=0
 CPP2_ENABLE=0
 LPSC_ENABLE=0
 MCLRPU_ENABLE=0
+
 [Directories]
 Include=
 Library=
 LinkerScript=
+
 [Target Data]
-FileList=LAB8.ASM;
+FileList=LAB10.ASM;
 BuildTool=MPASM
 OptionString=
 AdditionalOptionString=
-BuildRequired=0
-[LAB8.ASM]
+BuildRequired=1
+
+[LAB10.ASM]
 Type=4
 Path=
-FileList=P16F84.INC;
+FileList=PIC16F84.INC;
 BuildTool=
 OptionString=
 AdditionalOptionString=
-[P16F84.INC]
+
+[PIC16F84.INC]
 Type=5
 Path=
 FileList=
 BuildTool=
 OptionString=
 AdditionalOptionString=
+
 [Trace-Config]
 GetAddress=1
 AddressWidth=5.000000
@@ -77,12 +83,13 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
+
 [Windows]
-1=0000 c:\progra~1\mplab\test\LAB8.asm 20 19 890 457 9 0
-0=0004 57 433 927 615 9 0
+0=0000 c:\progra~1\mplab\3qwer.asm 73 42 719 375 9 0
+
 [mru-list]
-1=c:\progra~1\mplab\test\LAB8.asm
-2=c:\progra~1\mplab\kav\lab8.asm
-3=c:\progra~1\mplab\test\l8b.asm
-4=c:\progra~1\mplab\alex\lab8.asm
-5=c:\progra~1\mplab\test\l8a.asm
+1=c:\progra~1\mplab\3qwer.asm
+2=c:\progra~1\mplab\LAB10.asm
+3=c:\progra~1\mplab\3–¿¡Œ“¿.asm
+4=c:\progra~1\mplab\31.asm
+5=c:\progra~1\mplab\3.asm

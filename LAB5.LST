@@ -1,4 +1,4 @@
-MPASM 02.80 Released            LAB5.ASM   12-4-2003  16:12:28         PAGE  1
+MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -20,63 +20,35 @@ Warning[203]: Found opcode in column 1. (OPTION)
 Warning[224]: Use of this instruction is not recommended.
 0002   0062           00006 OPTION
 Warning[203]: Found opcode in column 1. (MOVLW)
-0003   3012           00007 MOVLW D'18'
+0003   300A           00007 MOVLW D'10'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0004   00AD           00008 MOVWF 2Dh 
+0004   008D           00008 MOVWF 0x0D 
 Warning[203]: Found opcode in column 1. (MOVLW)
 0005   3000           00009 MOVLW D'0'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0006   008E           00010 MOVWF 0Eh 
+0006   008E           00010 MOVWF 0x0E 
 Warning[203]: Found opcode in column 1. (MOVLW)
-0007   3006           00011 MOVLW D'6'
+0007   3005           00011 MOVLW D'5'
 0008                  00012 N
-                      00013 ;MOVWF 0Ch 
+Warning[203]: Found opcode in column 1. (SUBWF)
+0008   020D           00013 SUBWF 0x0D,0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0009   008C           00014 MOVWF 0x0C 
 Warning[203]: Found opcode in column 1. (INCF)
-0008   0A8E           00014 INCF 0Eh,1
-                      00015 ;MOVFW 0Ch
-Warning[203]: Found opcode in column 1. (SUBWF)
-0009   02AD           00016 SUBWF 2Dh,1
-Warning[203]: Found opcode in column 1. (BTFSS)
-000A   1D03           00017 BTFSS STATUS,Z
-Warning[203]: Found opcode in column 1. (GOTO)
-000B   2808           00018 GOTO N
+000A   0A8E           00015 INCF 0x0E,1
 Warning[203]: Found opcode in column 1. (MOVLW)
-000C   3002           00019 MOVLW D'2'
-                      00020 ;MOVWF 0Dh
-                      00021 ;DECF 0Dh
-                      00022 ;MOVFW 0Dh
-Warning[203]: Found opcode in column 1. (MOVWF)
-000D   009D           00023 MOVWF 1Dh
-Warning[204]: Found pseudo-op in column 1. (MOVFW)
-000E   080E           00024 MOVFW 0Eh
-                      00025 
-000F                  00026 K
-Warning[203]: Found opcode in column 1. (ADDWF)
-000F   070E           00027 ADDWF 0Eh,0
-                      00028 
-Warning[203]: Found opcode in column 1. (DECFSZ)
-0010   0B9D           00029 DECFSZ 1Dh,1
-                      00030 
-MPASM 02.80 Released            LAB5.ASM   12-4-2003  16:12:28         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
+000B   300C           00016 MOVLW 0x0C
+Warning[203]: Found opcode in column 1. (BTFSC)
+000C   1903           00017 BTFSC STATUS,Z
 Warning[203]: Found opcode in column 1. (GOTO)
-0011   280F           00031 GOTO K
+000D   2808           00018 GOTO N
+Warning[203]: Found opcode in column 1. (MOVLW)
+000E   300E           00019 MOVLW 0x0E
 Warning[203]: Found opcode in column 1. (MOVWF)
-0012   009E           00032 MOVWF 1Eh
-Warning[204]: Found pseudo-op in column 1. (MOVFW)
-0013   080E           00033 MOVFW 0Eh
-Warning[203]: Found opcode in column 1. (SUBWF)
-0014   021E           00034 SUBWF 1Eh,0  
-                      00035 
-Warning[203]: Found opcode in column 1. (MOVWF)
-0015   0086           00036 MOVWF PORTB
+000F   0086           00020 MOVWF PORTB
 Warning[205]: Found directive in column 1. (END)
-                      00037 END
-MPASM 02.80 Released            LAB5.ASM   12-4-2003  16:12:28         PAGE  3
+                      00021 END
+MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  2
 
 
 SYMBOL TABLE
@@ -99,7 +71,6 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-K                                 0000000F
 N                                 00000008
 NOT_PD                            00000003
 NOT_RBPU                          00000007
@@ -135,13 +106,13 @@ _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
 _LP_OSC                           00003FFC
-MPASM 02.80 Released            LAB5.ASM   12-4-2003  16:12:28         PAGE  4
+_PWRTE_OFF                        00003FFF
+MPASM 02.80 Released             LAB5.ASM   11-20-2003  16:07:53         PAGE  3
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-_PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
 _RC_OSC                           00003FFF
 _WDT_OFF                          00003FFB
@@ -152,16 +123,16 @@ __16F84                           00000001
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : XXXXXXXXXXXXXXXX XXXXXX---------- ---------------- ----------------
+0000 : XXXXXXXXXXXXXXXX ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    22
-Program Memory Words Free:  1002
+Program Memory Words Used:    16
+Program Memory Words Free:  1008
 
 
 Errors   :     0
-Warnings :    26 reported,     0 suppressed
+Warnings :    20 reported,     0 suppressed
 Messages :     0 reported,     0 suppressed
 
 

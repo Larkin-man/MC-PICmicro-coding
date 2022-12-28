@@ -1,4 +1,4 @@
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:03:09         PAGE  1
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -13,152 +13,165 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0100                  00004  ORG 100h
 0100                  00005 BEGIN
                       00006 
-  0000000C            00007 SCRATCH EQU 0Ch
-  0000000D            00008 DIGIT EQU 0Dh
-  0000000E            00009 PORTAL EQU 0Eh
-                      00010 
-0100   1283           00011  BCF STATUS,RP0
-0101   0186           00012  CLRF PORTB
-0102   3000           00013  MOVLW B'00000000'
-0103   1683           00014  BSF STATUS,RP0
+Warning[207]: Found label after column 1. (D1)
+  0000000C            00007  D1 EQU 0Ch
+Warning[207]: Found label after column 1. (D2)
+  0000000D            00008  D2 EQU 0Dh
+                      00009 
+0100   1283           00010  BCF STATUS,RP0
+0101   0186           00011  CLRF PORTB
+0102   3000           00012  MOVLW B'00000000'
+0103   1683           00013  BSF STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0104   0086           00015  MOVWF TRISB
-0105   1283           00016  BCF STATUS,RP0
-                      00017  
-0106   1283           00018  BCF STATUS,RP0
-0107   0185           00019  CLRF PORTA
-0108   301F           00020  MOVLW B'11111'
-0109   1683           00021  BSF STATUS,RP0
+0104   0086           00014  MOVWF TRISB
+0105   1283           00015  BCF STATUS,RP0
+                      00016  
+0106   1283           00017  BCF STATUS,RP0
+0107   0185           00018  CLRF PORTA
+0108   301F           00019  MOVLW B'11111'
+0109   1683           00020  BSF STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-010A   0085           00022  MOVWF TRISA
-010B   1283           00023  BCF STATUS,RP0
-                      00024 
-010C   3009           00025  MOVLW B'00001001'
-010D   008E           00026  MOVWF PORTAL
-010E                  00027 LOOP
-                      00028  
-010E   180E           00029  BTFSC PORTAL,0
-010F   212D           00030  CALL FROT
-                      00031 
-0110   188E           00032  BTFSC PORTAL,1
-0111   211D           00033  CALL FAR
-0112   1C8E           00034  BTFSS PORTAL,1
-0113   2122           00035  CALL UNFAR
-                      00036 
-0114   190E           00037  BTFSC PORTAL,2
-0115   2127           00038  CALL GAB
-0116   1D0E           00039  BTFSS PORTAL,2
-0117   212A           00040  CALL UNGAB
-                      00041 
-0118   198E           00042  BTFSC PORTAL,3
-0119   2134           00043  CALL SROT
-                      00044 
-011A   1A0E           00045  BTFSC PORTAL,4
-011B   293B           00046  GOTO AVA
-011C                  00047 RETPOINT
-                      00048 
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:03:09         PAGE  2
+010A   0085           00021  MOVWF TRISA
+010B   1283           00022  BCF STATUS,RP0
+                      00023 
+Warning[207]: Found label after column 1. (LOOP)
+010C                  00024  LOOP
+                      00025 
+010C   1885           00026  BTFSC PORTA,1
+010D   211B           00027  CALL FAR
+010E   1C85           00028  BTFSS PORTA,1
+010F   2120           00029  CALL UNFAR
+                      00030 
+0110   1905           00031  BTFSC PORTA,2
+0111   2125           00032  CALL GAB
+0112   1D05           00033  BTFSS PORTA,2
+0113   2128           00034  CALL UNGAB
+                      00035 
+0114   1A05           00036  BTFSC PORTA,4
+0115   2939           00037  GOTO AVA
+Warning[207]: Found label after column 1. (RETPOINT)
+0116                  00038  RETPOINT
+                      00039 
+0116   1805           00040  BTFSC PORTA,0
+0117   212B           00041  CALL FROT
+                      00042 
+0118   1985           00043  BTFSC PORTA,3
+0119   2132           00044  CALL SROT
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-011C   290E           00049  GOTO LOOP
-                      00050 
-011D                  00051 FAR
-011D   1486           00052  BSF PORTB,1
-011E   1506           00053  BSF PORTB,2
-011F   1686           00054  BSF PORTB,5
-0120   1706           00055  BSF PORTB,6
-0121   0008           00056  RETURN
-                      00057 
-0122                  00058 UNFAR
-0122   1086           00059  BCF PORTB,1
-0123   1106           00060  BCF PORTB,2
-0124   1286           00061  BCF PORTB,5
-0125   1306           00062  BCF PORTB,6
-0126   0008           00063  RETURN
-                      00064 
-0127                  00065 GAB
-0127   1586           00066  BSF PORTB,3
-0128   1606           00067  BSF PORTB,4
-0129   0008           00068  RETURN
-                      00069 
-012A                  00070 UNGAB
-012A   1186           00071  BCF PORTB,3
-012B   1206           00072  BCF PORTB,4
-012C   0008           00073  RETURN
-                      00074 
-012D                  00075 FROT
-012D   198E           00076  BTFSC PORTAL,3
-012E   294D           00077  GOTO ERR
-012F   1406           00078  BSF PORTB,0
-0130   2146           00079  CALL PAUSE
-0131   1006           00080  BCF PORTB,0
-0132   2146           00081  CALL PAUSE
-0133   0008           00082  RETURN
-                      00083 
-0134                  00084 SROT
-0134   180E           00085  BTFSC PORTAL,0
-0135   294D           00086  GOTO ERR
-0136   1786           00087  BSF PORTB,7
-0137   2146           00088  CALL PAUSE
-0138   1386           00089  BCF PORTB,7
-0139   2146           00090  CALL PAUSE
-013A   0008           00091  RETURN
-                      00092 
-013B                  00093 AVA
-013B   180E           00094  BTFSC PORTAL,0
-013C   294D           00095  GOTO ERR
-013D   198E           00096  BTFSC PORTAL,3
-013E   294D           00097  GOTO ERR
-013F   1406           00098  BSF PORTB,0
-0140   1786           00099  BSF PORTB,7
-0141   2146           00100  CALL PAUSE
-0142   1006           00101  BCF PORTB,0
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:03:09         PAGE  3
+                      00045 
+011A   290C           00046  GOTO LOOP
+                      00047 
+Warning[207]: Found label after column 1. (FAR)
+011B                  00048  FAR
+011B   1486           00049  BSF PORTB,1
+011C   1506           00050  BSF PORTB,2
+011D   1686           00051  BSF PORTB,5
+011E   1706           00052  BSF PORTB,6
+011F   0008           00053  RETURN
+                      00054 
+Warning[207]: Found label after column 1. (UNFAR)
+0120                  00055  UNFAR
+0120   1086           00056  BCF PORTB,1
+0121   1106           00057  BCF PORTB,2
+0122   1286           00058  BCF PORTB,5
+0123   1306           00059  BCF PORTB,6
+0124   0008           00060  RETURN
+                      00061 
+Warning[207]: Found label after column 1. (GAB)
+0125                  00062  GAB
+0125   1586           00063  BSF PORTB,3
+0126   1606           00064  BSF PORTB,4
+0127   0008           00065  RETURN
+                      00066 
+Warning[207]: Found label after column 1. (UNGAB)
+0128                  00067  UNGAB
+0128   1186           00068  BCF PORTB,3
+0129   1206           00069  BCF PORTB,4
+012A   0008           00070  RETURN
+                      00071 
+Warning[207]: Found label after column 1. (FROT)
+012B                  00072  FROT
+012B   1985           00073  BTFSC PORTA,3
+012C   294D           00074  GOTO ERR
+012D   1406           00075  BSF PORTB,0
+012E   2144           00076  CALL ZZZ
+012F   1006           00077  BCF PORTB,0
+0130   2144           00078  CALL ZZZ
+0131   0008           00079  RETURN
+                      00080 
+Warning[207]: Found label after column 1. (SROT)
+0132                  00081  SROT
+0132   1805           00082  BTFSC PORTA,0
+0133   294D           00083  GOTO ERR
+0134   1786           00084  BSF PORTB,7
+0135   2144           00085  CALL ZZZ
+0136   1386           00086  BCF PORTB,7
+0137   2144           00087  CALL ZZZ
+0138   0008           00088  RETURN
+                      00089 
+Warning[207]: Found label after column 1. (AVA)
+0139                  00090  AVA
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0143   1386           00102  BCF PORTB,7
-0144   2146           00103  CALL PAUSE
-0145   291C           00104  GOTO RETPOINT
-                      00105 
-0146                  00106 PAUSE
+0139   1805           00091  BTFSC PORTA,0
+013A   294D           00092  GOTO ERR
+013B   1985           00093  BTFSC PORTA,3
+013C   294D           00094  GOTO ERR
+013D   1406           00095  BSF PORTB,0
+013E   1786           00096  BSF PORTB,7
+013F   2144           00097  CALL ZZZ
+0140   1006           00098  BCF PORTB,0
+0141   1386           00099  BCF PORTB,7
+0142   2144           00100  CALL ZZZ
+0143   2916           00101  GOTO RETPOINT
+                      00102 
+Warning[207]: Found label after column 1. (ZZZ)
+0144                  00103  ZZZ
+0144   30FF           00104  MOVLW D'255'
+0145   008D           00105  MOVWF D2
+Warning[207]: Found label after column 1. (LOOP1)
+0146                  00106  LOOP1
 0146   30FF           00107  MOVLW D'255'
-0147   008D           00108  MOVWF DIGIT
-0148                  00109 LOOP1
-0148   30FF           00110  MOVLW D'255'
-0149   008C           00111  MOVWF SCRATCH
-014A                  00112 LOOP2
-014A   0B8C           00113  DECFSZ SCRATCH,1
-                      00114  ;GOTO LOOP2
-014B   0B8D           00115  DECFSZ DIGIT,1
-                      00116  ;GOTO LOOP1
-014C   0008           00117  RETURN
-                      00118 
-014D                  00119 ERR
-014D   30FF           00120  MOVLW B'11111111'
-014E   0086           00121  MOVWF PORTB
-014F   2146           00122  CALL PAUSE
-0150   0186           00123  CLRF PORTB
-0151   2146           00124  CALL PAUSE
-0152   290E           00125  GOTO LOOP
-                      00126 
-                      00127  END
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:03:09         PAGE  4
+0147   008C           00108  MOVWF D1
+Warning[207]: Found label after column 1. (LOOP2)
+0148                  00109  LOOP2
+0148   0B8C           00110  DECFSZ D1,1
+0149   2948           00111  GOTO LOOP2
+014A   0B8D           00112  DECFSZ D2,1
+014B   2946           00113  GOTO LOOP1
+014C   0008           00114  RETURN
+                      00115 
+Warning[207]: Found label after column 1. (ERR)
+014D                  00116  ERR
+014D   30FF           00117  MOVLW B'11111111'
+014E   0086           00118  MOVWF PORTB
+014F   2144           00119  CALL ZZZ
+0150   0186           00120  CLRF PORTB
+0151   2144           00121  CALL ZZZ
+0152   290C           00122  GOTO LOOP
+                      00123 
+                      00124  END
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  4
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-AVA                               0000013B
+AVA                               00000139
 BEGIN                             00000100
 C                                 00000000
+D1                                0000000C
+D2                                0000000D
 DC                                00000001
-DIGIT                             0000000D
 EEADR                             00000009
 EECON1                            00000088
 EECON2                            00000089
@@ -167,10 +180,10 @@ EEIE                              00000006
 EEIF                              00000004
 ERR                               0000014D
 F                                 00000001
-FAR                               0000011D
-FROT                              0000012D
+FAR                               0000011B
+FROT                              0000012B
 FSR                               00000004
-GAB                               00000127
+GAB                               00000125
 GIE                               00000007
 INDF                              00000000
 INTCON                            0000000B
@@ -178,18 +191,16 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000010E
-LOOP1                             00000148
-LOOP2                             0000014A
+LOOP                              0000010C
+LOOP1                             00000146
+LOOP2                             00000148
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
 OPTION_REG                        00000081
-PAUSE                             00000146
 PCL                               00000002
 PCLATH                            0000000A
 PORTA                             00000005
-PORTAL                            0000000E
 PORTB                             00000006
 PS0                               00000000
 PS1                               00000001
@@ -198,32 +209,32 @@ PSA                               00000003
 RBIE                              00000003
 RBIF                              00000000
 RD                                00000000
-RETPOINT                          0000011C
+RETPOINT                          00000116
 RP0                               00000005
 RP1                               00000006
-SCRATCH                           0000000C
-SROT                              00000134
+SROT                              00000132
 STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:03:09         PAGE  5
+T0SE                              00000004
+TMR0                              00000001
+MPASM 02.80 Released              LAB8.ASM   10-9-2010  11:25:23         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-T0SE                              00000004
-TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
-UNFAR                             00000122
-UNGAB                             0000012A
+UNFAR                             00000120
+UNGAB                             00000128
 W                                 00000000
 WR                                00000001
 WREN                              00000002
 WRERR                             00000003
 Z                                 00000002
+ZZZ                               00000144
 _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
@@ -250,7 +261,7 @@ Program Memory Words Free:   940
 
 
 Errors   :     0
-Warnings :     0 reported,     0 suppressed
+Warnings :    15 reported,     0 suppressed
 Messages :     2 reported,     0 suppressed
 
 
