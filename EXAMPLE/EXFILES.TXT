@@ -1,0 +1,54 @@
+---------------------
+Example Files
+---------------------
+The source code for examples used in Microchip Technology Development
+Tools user's guides is generally provided in the document.  However,
+some example code, due to size or the possibility of frequent change,
+is not printed. Therefore, this code is provided as part of the 
+MPLAB IDE installation.
+
+In addition, other undocumented example files may be included in the
+installation.
+
+These example files are discussed here.
+---------------------
+Примеры файлов
+---------------------
+Исходный код для примеров, используемых в руководствах пользователя Microchip Technology Development Tools, обычно предоставляется в документе. Однако некоторые примеры кода из-за размера или возможности частого изменения не печатаются. Поэтому этот код предоставляется как часть установки MPLAB IDE.
+
+Кроме того, в установку могут быть включены другие недокументированные файлы примеров.
+
+Эти примеры файлов обсуждаются здесь.
+---------------------
+Example Files by Tool
+---------------------
+MPLAB IDE
+ sample.asm
+ 16f84.lkr(*)
+ example.asm(*)
+ example2.asm(*)
+ demo877.asm
+ tutor.asm
+
+MPASM Assembler/MPLINK Linker
+ idasm16.asm
+ idasm17.asm
+ sampobj.asm
+ mult8x8.asm
+
+MPLAB ICD
+ tut877.asm
+
+PRO MATE II/PICSTART Plus
+ sample.asm
+ 12c508a.asm  -> 12c508a.hex
+ 12c508a2.asm -> 12c508a2.hex
+
+PROCMD
+ count2.bat
+ count3.bat
+ sqtp1.bat
+ sqtp2.bat
+
+(*) These files found in the Example subdirectory of the MPLAB IDE
+    install directory.  All other files found in the install directory.
