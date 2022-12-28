@@ -41,6 +41,14 @@ BuildRequired=0
 [LAB4.ASM]
 Type=4
 Path=
+FileList=P16F84.INC;
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[P16F84.INC]
+Type=5
+Path=
 FileList=
 BuildTool=
 OptionString=
@@ -76,17 +84,11 @@ TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
 
-[mru-list]
-1=c:\progra~1\mplab\임41\LAB4.asm
-2=c:\progra~1\mplab\LAB2.asm
-3=a:\112.asm
-4=a:\111.asm
-5=c:\progra~1\mplab\12.asm
-
 [Windows]
-4=0000 c:\progra~1\mplab\임41\LAB4.asm 78 120 724 453 9 0
-3=0004 117 349 763 666 9 0
-2=0020 392 -16 792 336 9 0
-1=0010 44 109 524 535 9 4 16
-0=0002 C:\PROGRA~1\MPLAB\임41\Watch_1.wat 436 333 860 477 9 0
+0=0000 a:\LAB4.asm 33 4 757 444 9 0
 
+[mru-list]
+1=a:\3.asm
+2=c:\progra~1\mplab\임41\1.asm
+3=c:\progra~1\mplab\2.asm
+4=c:\progra~1\mplab\LAB4.asm

@@ -1,4 +1,4 @@
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  1
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -8,41 +8,49 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00001         LIST
                       00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
                       00136         LIST
-                      00002 
-  00000000            00003 INITB   EQU B'00000000'
-  0000000C            00004 VARA    EQU 0Ch
-  0000000D            00005 VARB    EQU 0Dh
-                      00006 
-Warning[205]: Found directive in column 1. (ORG)
-0000                  00007 ORG 0
-Warning[203]: Found opcode in column 1. (GOTO)
-0000   2900           00008 GOTO BEGIN
-Warning[205]: Found directive in column 1. (ORG)
-0100                  00009 ORG 100h
-                      00010 
-0100                  00011 BEGIN
-0100   1283           00012         BCF     STATUS, RP0
-0101   0186           00013         CLRF    PORTB
-0102   3000           00014         MOVLW   INITB
-0103   1683           00015         BSF     STATUS, RP0
+2007   3FF1           00002  __CONFIG  _XT_OSC & _CP_OFF & _PWRTE_ON & _WDT_OFF 
+                      00003 ; ячейки ОЗУ
+  0000000C            00004 SCRATCH         EQU     0Ch
+  0000000D            00005 DIGIT           EQU     0Dh
+  0000000E            00006 DAS             EQU     0Eh
+  00000000            00007 INITA           EQU     B'00000000'
+  00000000            00008 INITB           EQU     B'00000000'
+0000                  00009         ORG     0
+0000   2900           00010         GOTO    BEGIN
+                      00011 ;
+0100                  00012         ORG     100h
+0100                  00013 BEGIN
+                      00014 ;Инициализация порта А
+0100   1283           00015         BCF     STATUS,RP0    ;Выбор банка 0
+0101   0185           00016         CLRF    PORTA         ;Очистить регистр CNTRLPORT
+0102   3000           00017         MOVLW   INITA         ;Загpузить B'00000000' в pегистp W
+0103   1683           00018         BSF     STATUS,RP0    ;Выбор банка 1
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0104   0086           00016         MOVWF   TRISB
-                      00017 
-0105   1283           00018         BCF     STATUS, RP0
-                      00019 
-0106   3003           00020         MOVLW   D'3'
-0107   008C           00021         MOVWF   VARA
-                      00022 
-0108   0103           00023         CLRW
-0109                  00024 LOOP
-0109   3E04           00025         ADDLW   D'4'
-010A   0B8C           00026         DECFSZ  VARA, 1
-010B   2909           00027         GOTO    LOOP
-                      00028 
-010C   0086           00029         MOVWF   PORTB
+0104   0085           00019         MOVWF   TRISA         ;Все разряды порта А установить как выходы
+                      00020 ;Инициализация порта В
+0105   1283           00021         BCF     STATUS,RP0    ;Выбор банка 0
+0106   0186           00022         CLRF    PORTB         ;Очистить регистр DATAPORT
+0107   3000           00023         MOVLW   INITB         ;Загpузить B'00000000' в pегистp W
+0108   1683           00024         BSF     STATUS,RP0    ;Выбор банка 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0109   0086           00025         MOVWF   TRISB         ;Все разряды порта В установить как выходы 
+                      00026 ;
+010A                  00027 NACH
+010A   1283           00028         BCF     STATUS,RP0  
+                      00029 
+010B   3005           00030         MOVLW   D'5'
+010C   008E           00031         MOVWF   DAS
+                      00032 
+010D   0103           00033         CLRW
+010E                  00034 LOOP
+010E   3E02           00035         ADDLW   D'2'
+010F   0B8E           00036         DECFSZ  DAS, 1
+0110   290E           00037         GOTO    LOOP
+                      00038 
+0111   0086           00039         MOVWF   PORTB
 Warning[205]: Found directive in column 1. (END)
-                      00030 END
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  2
+                      00040 END
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  2
 
 
 SYMBOL TABLE
@@ -50,7 +58,9 @@ SYMBOL TABLE
 
 BEGIN                             00000100
 C                                 00000000
+DAS                               0000000E
 DC                                00000001
+DIGIT                             0000000D
 EEADR                             00000009
 EECON1                            00000088
 EECON2                            00000089
@@ -61,13 +71,15 @@ F                                 00000001
 FSR                               00000004
 GIE                               00000007
 INDF                              00000000
+INITA                             00000000
 INITB                             00000000
 INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              00000109
+LOOP                              0000010E
+NACH                              0000010A
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
@@ -85,6 +97,7 @@ RBIF                              00000000
 RD                                00000000
 RP0                               00000005
 RP1                               00000006
+SCRATCH                           0000000C
 STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
@@ -93,20 +106,18 @@ T0SE                              00000004
 TMR0                              00000001
 TRISA                             00000085
 TRISB                             00000086
-VARA                              0000000C
-VARB                              0000000D
 W                                 00000000
 WR                                00000001
 WREN                              00000002
-WRERR                             00000003
-Z                                 00000002
-_CP_OFF                           00003FFF
-MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:03:58         PAGE  3
+MPASM 02.80 Released                LAB4.ASM   11-26-2003  18:28:27         PAGE  3
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
 _LP_OSC                           00003FFC
@@ -122,16 +133,17 @@ __16F84                           00000001
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X--------------- ---------------- ---------------- ----------------
-0100 : XXXXXXXXXXXXX--- ---------------- ---------------- ----------------
+0100 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    14
-Program Memory Words Free:  1010
+Program Memory Words Used:    19
+Program Memory Words Free:  1005
 
 
 Errors   :     0
-Warnings :     4 reported,     0 suppressed
-Messages :     1 reported,     0 suppressed
+Warnings :     1 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
 
 
